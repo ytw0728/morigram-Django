@@ -30,7 +30,7 @@ def login(request):
             l(request, user)
             return redirect('/')
         else:
-            return render(request, 'login.html', {'msg': '아이디와 비밀번호를 확인하세요'})
+            return render(request, 'login.html', {'msg': 'check your id and password!'})
     else:
         return render(request, 'login.html')
 
