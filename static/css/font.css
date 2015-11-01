@@ -1,0 +1,21 @@
+@font-face{
+	font-family: 'glyphicons';
+	src: url('../fonts/glyphicons-halflings-regular.tff'), 
+		url('../fonts/glyphicons-halflings-regular.woff'),
+		url('../fonts/glyphicons-halflings-regular.svg'),
+		url('../fonts/glyphicons-halflings-regular.eot');
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@media (max-width:900px){html{font-size:14px;}}
+@media (min-width:901px) and (max-width:1024px){html{font-size:14px;}}
+@media (min-width:1025px) and (max-width:1330px){html{font-size:16px;}}
+@media (min-width:1331px) and (max-width:1800px){html{font-size:19px;}}
+@media (min-width:1801px) and (max-width:2000px){html{font-size:22px;}}
+@media (min-width:2001px) and (max-width:2200px){html{font-size:25px;}}
+@media (min-width:2201px) and (max-width:2400px){html{font-size:31px;}}
+@media (min-width:2401px) and (max-width:2600px){html{font-size:37px;}}
+@media (min-width:2601px) and (max-width:2800px){html{font-size:43px;}}
+@media (min-width:2801px) and (max-width:3000px){html{font-size:49px;}}
+@media (min-width:3001px) and (max-width:3200px){html{font-size:55px;}}

@@ -16,7 +16,7 @@ class BucketListTestCase(TestCase):
         data = loads(res.content.decode())
         print(data)
         self.assertEqual(data[0]['success'], 'True')
-    
+
     def TestGet(self):
         res = self.c.get('/buckets/')
         data = loads(res.content.decode())

@@ -1,0 +1,342 @@
+container{
+	display: block;
+	width: 94%;
+	height: 85%;
+	margin-top: 5%;
+	background: #eaeaea;
+
+	box-shadow: .2rem .2rem .1rem rgba(0,0,0,.2);
+}
+form{
+	display: none;
+}
+	container nav{
+		position: relative;
+		width : 200px;
+		height: 100%;
+		float: left;
+
+		background: #1b2433;
+	}
+			container nav ul{
+				display:inline-block;
+				width: 100%;
+				height: 100%;
+				margin:0;
+				padding:0;
+				background:#242d3a;
+				text-align: center;
+			}
+				container nav ul li{
+					display:inline-block;
+					width: 100%;
+
+					list-style: none;
+					text-align: center;
+				}
+				container nav .navlogo{
+					background:#1f232d;
+					height: auto;
+					border-bottom: 5px solid #151b24;
+
+				}
+					container nav ul .navlogo img{
+						display:inline-block;
+						width: 50%;
+						height: auto;
+						margin:24%;
+					vertical-align: middle;
+						
+					}
+					container nav ul .homelink{
+						height: 10%;
+
+
+						letter-spacing: 2px;
+						color: white;
+					}
+
+						container nav ul .color_label{
+							display: inline-block;
+							width: 2%;
+							height: 100%;
+
+							background: none;
+							vertical-align: top;
+							transition :.2s;
+						}
+						container nav ul .now{
+							background: yellow;
+						}
+						container nav ul .linkimg{
+							display:inline-block;
+							width: 30%;
+						}
+							container nav ul .linkimg img{
+								height: 1em;
+								margin-right: 5px;
+
+								vertical-align: middle;
+							}
+						container nav ul .linktxt{
+							display: inline-block;
+							width: 68%;
+							text-align:left;
+							vertical-align: middle;
+						}
+
+					container nav ul .mainmenu {
+						color: white;
+						background:#131921;
+
+						height: 2.5em;
+						line-height: 2.5em;
+					}
+						container nav ul .mainmenu span{
+							display: inline-block;
+							width: 70%;
+							text-align: left;
+							vertical-align: middle;
+						}
+					container nav ul .navs{
+						font-size: .8em;
+						height: 3em;
+						color: white;
+						transition: .5s;
+						-webkit-transition: .5s;
+						-moz-transition: .5s;
+						-ms-transition: .5s;
+						-o-transition: .5s;
+					}
+					container nav ul .navs:hover{
+						background:#131921;
+					}
+					container nav ul .navs:hover .color_label{
+						background: yellow;
+					}
+
+
+	container #posts{
+		position: relative;
+		width : 80%;
+		height: 100%;
+		float: right;
+		background: #eaeaea;
+
+		text-align: center;
+	}
+
+		container #posts .menus{
+			display: block;
+			margin:0;
+			padding: 0;
+			width: 100%;
+			height: 3rem;
+			background: white;
+
+			text-align: right;
+
+			border-bottom: solid 2px #d6d7d8;
+			margin-bottom: -2px;
+		}
+			container #posts .menus li{
+				display: inline-block;
+				margin-right: 30px;
+
+			vertical-align: middle;
+				max-width: 1rem;
+				height: auto;
+			}
+			container #posts .menus li img:hover{
+				cursor:pointer;
+				animation: bounce 1s ;
+				-webkit-animation:bounce 1s;
+				-moz-animation:bounce 1s;
+				-ms-animation:bounce 1s;
+				-o-animation:bounce 1s;
+			}
+
+		container .scroll{
+			width: 100%;
+			height: 90%;
+			overflow-y: scroll;
+		}
+			container .scroll .bucket_list{
+				display: inline-block;
+				width: 98%;
+				margin-top: 2%;
+				height: auto;
+				border: solid .15rem #d6d7d8;
+				background: white;
+			}
+				container .scroll .bucket_list .lists{
+
+					display: inline-block;
+					width: 100%;
+					height: 5rem;
+					margin: 0;
+					padding:0;
+
+					line-height: 5rem;
+
+					background: #f5f5f5;
+
+					border: solid 2px white;
+
+					text-align: left;
+
+				}
+				container .scroll .bucket_list .lists .img_box{
+					display:inline-block;
+					width: 20%;
+					height: 100%;
+					text-align: center;
+				}
+					container .scroll .bucket_list .lists .lists_img{
+						display: inline-block;
+						max-height: 80%;
+						height: 80%;
+						width: auto;
+
+						vertical-align: middle;
+						margin: 0;
+
+						margin-right: 1em;
+						padding: 0;
+						border-radius: 50% 50%;
+						
+
+					}
+					container .scroll .bucket_list .lists .title{
+						display: inline-block;
+						width: 60%;
+						height: 100%;
+
+						overflow-y: hidden;
+						overflow-x: auto;
+						margin: 0;
+						padding: 0;
+
+						vertical-align: middle;
+					}
+					container .scroll .bucket_list .lists .checks{
+						display: inline-block;
+
+						width: 20%;
+						height: 100%;
+						margin: 0;
+						padding: 0;
+						vertical-align: middle;
+						text-align: center;
+
+					}
+						container .scroll .bucket_list .lists .checks img{
+							width: auto;
+							height: auto;
+							max-height: 50%;
+							transform: scale(1.3);
+							-webkit-transform: scale(1.3);
+							-moz-transform: scale(1.3);
+							-o-transform: scale(1.3);
+							-ms-transform: scale(1.3);
+						}
+						container .scroll .bucket_list .lists .checks img:hover{
+							cursor: pointer;
+						}
+			container .scroll .submit_section{
+				display: inline-block;
+				background: #597984;
+				width: 98%;
+				height: 5rem;
+
+				line-height: 5rem;
+
+				margin-bottom: 5rem;
+			}
+				container .scroll .submit_section img{
+					height: 40%;
+					vertical-align: middle;
+					margin-right: 1rem;
+				}
+				container .scroll .submit_section span{
+					color: white;
+					vertical-align: middle;
+				}
+				container .scroll .submit_section:hover{
+					cursor:pointer;
+				}
+
+				container .scroll #require_form{
+					display: hidden;
+					background: red;
+				}
+				.form_temp{
+					display: inline-block;
+					width: 100%;
+					height: 100%;
+					overflow: hidden;
+				}
+
+					.form_temp div{
+						height: 100%;
+
+						display: inline-block;
+
+						line-height: 100%;
+
+						text-align: center;
+						vertical-align: middle;
+					}
+						.form_temp .add_input{
+							width: 70%;
+							text-align: left;
+						}
+						.form_temp .buttons{
+							width: 0%;
+							margin-left: 30%;
+							text-align: right;
+							line-height: 5rem;
+							transition: .5s;
+							-webkit-transition :.5s;
+						}
+						.form_temp:hover .buttons{
+							width: 30%;
+							margin-left: 0%;
+						}
+							.form_temp .buttons	input{
+								border: none;
+								height: 80%;
+								width: 30%;
+								font-size: 1.2em;
+								color: white;
+
+								vertical-align: middle;
+
+							}
+							.form_temp .buttons	input:hover{
+								cursor: pointer;
+							}
+							.form_temp .buttons .add_submit{
+								background: url('../images/submit.jpg');
+								background-size: 100% none;
+								background-repeat: no-repeat;
+							}
+							.form_temp .buttons .add_cancel{
+								background: url('../images/cancel.jpg');
+								background-size: 100% none;
+								background-repeat: no-repeat;
+								margin-right: .5rem;
+							}
+					.input_caption{
+						display: inline-block;
+						width: 45%;
+						margin-left: 10%;
+						margin-top: 1em;
+						font-size: .7em;
+
+						font-weight: bold;
+					}
+					.add_img , .add_title{
+						width: 50%;
+						margin-left : -10%;
+					}

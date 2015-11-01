@@ -1,0 +1,308 @@
+container{
+	display: block;
+	width: 94%;
+	height: 85%;
+	margin-top: 5%;
+	background: #eaeaea;
+
+	box-shadow: .2rem .2rem .1rem rgba(0,0,0,.2);
+}
+form{
+	display: none;
+}
+	container nav{
+		position: relative;
+		width : 200px;
+		height: 100%;
+		float: left;
+
+		background: #1b2433;
+	}
+			container nav ul{
+				display:inline-block;
+				width: 100%;
+				height: 100%;
+				margin:0;
+				padding:0;
+				background:#242d3a;
+				text-align: center;
+			}
+				container nav ul li{
+					display:inline-block;
+					width: 100%;
+
+					list-style: none;
+					text-align: center;
+				}
+				container nav .navlogo{
+					background:#1f232d;
+					height: auto;
+					border-bottom: 5px solid #151b24;
+
+				}
+					container nav ul .navlogo img{
+						display:inline-block;
+						width: 50%;
+						height: auto;
+						margin:24%;
+					vertical-align: middle;
+
+					}
+					container nav ul .homelink{
+						height: 10%;
+						letter-spacing: 2px;
+						color: white;
+					}
+
+						container nav ul .color_label{
+							display: inline-block;
+							width: 2%;
+							height: 100%;
+
+							background: none;
+							vertical-align: top;
+
+							transition: .2s;
+							-webkit-transition: .2s;
+							-moz-transition: .2s;
+							-ms-transition: .2s;
+							-o-transition: .2s;
+						}
+						container nav ul .linkimg{
+							display:inline-block;
+							width: 30%;
+						}
+							container nav ul .linkimg img{
+								height: 1em;
+								margin-right: 5px;
+								vertical-align: middle;
+							}
+						container nav ul .linktxt{
+							display: inline-block;
+							width: 68%;
+							text-align:left;
+
+							vertical-align: middle;
+						}
+
+					container nav ul .mainmenu {
+						color: white;
+						background:#131921;
+						height: 2.5em;
+					}
+						container nav ul .mainmenu span{
+							display: inline-block;
+							width: 70%;
+							text-align: left;
+						vertical-align: middle;
+							
+						}
+					container nav ul .navs{
+						font-size: .8em;
+						height: 3em;
+						color: white;
+						transition: .5s;
+						-webkit-transition: .5s;
+						-moz-transition: .5s;
+						-ms-transition: .5s;
+						-o-transition: .5s;
+					}
+					container nav ul .navs:hover{
+						background:#131921;
+					}
+					container nav ul .navs:hover .color_label{
+						background: yellow;
+					}
+
+	container #posts{
+		position: relative;
+		width : 80%;
+		height: 100%;
+		float: right;
+		background: #eaeaea;
+
+		text-align: center;
+	}
+
+		container #posts .menus{
+			display: inline-block;
+			margin:0;
+			padding: 0;
+			width: 100%;
+			height: 3rem;
+			background: white;
+			text-align: right;
+
+			border-bottom: solid 2px #d6d7d8;
+			margin-bottom: 2px;
+		}
+			container #posts .menus li{
+				display: inline-block;
+				margin-right: 30px;
+
+				max-width: 1rem;
+				height: auto;
+
+				vertical-align: middle;
+			}
+			container #posts .menus li img:hover{
+				cursor:pointer;
+				animation: bounce 1s ;
+				-webkit-animation:bounce 1s;
+				-moz-animation:bounce 1s;
+				-ms-animation:bounce 1s;
+				-o-animation:bounce 1s;
+			}
+
+		container .scroll{
+			width: 100%;
+			height: 90%;
+			overflow-y: scroll;
+		}
+			container section {
+				border: solid .15rem #d6d7d8;
+			}
+			container .title{
+				display: inline-block;
+				font-size: 1rem;
+				width: 90%;
+				margin-top: 2%;
+				margin-bottom: 1rem;
+				text-align: left;
+
+			}
+				container .title img{
+					height: .8rem;
+				}
+			container .family{
+				width: 96%;
+				margin-top: 2%;
+				height: auto;
+
+				display: inline-block;
+				background: white;
+			}
+				container .family .profiles{
+					width: 100%;
+					height : auto;
+					margin-bottom: 20px;
+
+					text-align: center;
+				}
+					container .family .members{
+						display: inline-block;
+
+						width: 100px;
+						height: 100px;
+
+					}
+
+					container .family .members .member_imgs{
+						display: inline-block;
+						width: 70%;
+						height: 90px;
+						border-radius: 50%;				
+					}
+					container .family .members .name{
+						display : block;
+						font-size: .8em;
+					}
+					
+			container .preview{
+				width: 96%;
+				margin-top: 2%;
+				height: auto;
+
+				display: inline-block;
+				
+				background: white;
+
+				margin-bottom: 20px;
+
+				
+			}
+				container .previews{
+					display: inline-block;
+					max-width: 90%;
+					width: auto;
+					height: auto;
+					margin-bottom: 20px;
+
+					text-align:left;
+				}
+					container .preview .preview_imgs{
+						display: inline-block;
+						width: 25%;
+						height: 10%;
+						background: #000000;
+
+					}
+					container .preview .preview_imgs img{
+						width: 100%;
+						height: 100%;
+						opacity: 0.4;
+						transition: .2s;
+						-webkit-transition: .2s;
+						-ms-transition: .2s;
+						-o-transition: .2s;
+						-moz-transition: .2s;
+					}
+					container .preview .preview_imgs img:hover{
+						cursor: pointer;
+						opacity: 1;
+					}
+
+#modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	background: #000000;
+
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: -moz-flex;
+	display: -o-flex;
+
+  -webkit-align-items: center;
+ 	  -ms-align-items: center;
+ 	   -o-align-items: center;
+ 	 -moz-align-items: center;
+          align-items: center;
+
+  -webkit-justify-content: center;
+	  -ms-justify-content: center;
+	   -o-justify-content: center;
+	 -moz-justify-content: center;
+          justify-content: center;
+
+	z-index: -1;
+
+	box-shadow: 0px 0px 10px black;
+
+	animation: show_modal 1s ease;
+	-webkit-animation: show_modal 1s ease;
+	-moz-animation: show_modal 1s ease;
+	-ms-animation: show_modal 1s ease;
+	-o-animation: show_modal 1s ease;
+}
+
+#modal img {
+	display:inline-block;
+	width: auto;
+	height: auto;
+
+}
+
+body{
+	background: black;
+}
+
+wrap{
+	animation: none;
+	-webkit-animation: none;
+	-moz-animation: none;
+	-ms-animation: none;
+	-o-animation: none;
+}

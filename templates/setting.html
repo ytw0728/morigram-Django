@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset = "utf-8"/>
+	<title>Title</title>
+	<link rel = "stylesheet" type = "text/css" href = "../css/font.css" />
+	<link rel = "stylesheet" type = "text/css" href = "../css/default.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../css/home_animation.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "../css/setting.css"/>
+<!--mediaquery start-->
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<!--mediaquery end-->
+<!--[if lt IE 9]>
+< script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+< ![endif]-->
+<!--[if lte IE 7]>
+< script src="js/IE8.js"></script>
+<![endif]-->
+<!-- script start -->
+<script type = "text/javascript"src = "../js/layout.js"></script>
+<script type = "text/javascript" src = "../js/setting/setting_layout.js"></script>
+<script type = "text/javascript" src = "../js/setting/setting_routine.js"></script>
+<script type = "text/javascript" src = "../js/setting/setting_ajax.js"></script>
+<!-- script end -->
+</head>
+<body>
+<header id ="head">
+	<a href = "home.html">
+		<img src = "../images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/>
+	</a>
+</header>
+<wrap>
+	<container id = "main">
+		<nav>
+			<ul>
+				<li class = "navlogo">
+					<img src = "../images/sidebar_top.jpg" alt = "로고"/>
+				</li>
+				<a href = "home.html">
+					<li class = "homelink navs">
+						<span class = "linkimg"><img src = "../images/home.png" alt = "홈으로 이동합니다!"/></span><span class = "linktxt">Home</span>
+					</li>
+				</a>
+				<li class = "mainmenu">
+					<span>Main Menu</span>
+				</li>
+				<a href = "bucket_list.html">
+					<li class = "bucket_link mainmenus navs">
+						<span class = "color_label"></span><span class = "linkimg"><img src = "../images/bucket_list.png" alt ="버킷리스트로 이동합니다!"/></span><span class = "linktxt">버킷리스트</span>
+					</li>
+				</a>
+				<a href = "album.html">
+					<li class = "album mainmenus navs">
+						<span class = "color_label"></span><span class = "linkimg"><img src = "../images/album.png" alt ="앨범 모아보기로 이동합니다!"/></span><span class = "linktxt">앨범모아보기</span>
+					</li>
+				</a>
+			</ul>
+		</nav>
+		<div id = "posts">
+			<ul class = "menus">
+				<li class = "link"><a href = "setting.html"><img src = "../images/설정.png" alt = "설정"/></a></li>
+				<li class = "link"><img id = "logout" src = "../images/로그아웃.png" alt = "로그아웃" onclick = "logout_method()"/></li>
+			</ul>
+			<div class = "scroll">
+				<section class = "box">
+					<div class = "title">
+						<img class = "ring" src = "../images/ring.png"/> 
+						구성원을 추가해주세요!
+					</div>
+					<div class = "members_box">
+					
+					</div>
+				</section>
+			</div>
+		</div>
+	</container>
+</wrap>
+</body>
+</html>
+<!--
+<article class="members" >
+	<img class="member_imgs" src="../images/pa.png" alt="멤버 프로필 이미지 감감감아빠 ">
+	<span class="name"><span class="role" >아빠</span>감감감</span>
+</article>
+-->

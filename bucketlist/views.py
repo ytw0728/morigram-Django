@@ -13,6 +13,8 @@ class BucketListView(viewsets.ModelViewSet):
     queryset = BucketList.objects.all()
     serializer_class = BucketListSerializer
     parser_classes = (MultiPartParser, FormParser,)
+    def get(self, req, *arg, **kwargs):
+        return render(req, 'bucket_list.html')
 
     def post(self, req, *arg, **kwargs):
         req.data['image'] = req.stream.FILES['image']

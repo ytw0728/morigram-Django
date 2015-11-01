@@ -2,7 +2,6 @@ __pycache__/
 *.py[cod]
 settings.py
 static/admin/
-static/rest_framework/img/grid.png
 static/rest_framework/
 .idea/
 media/

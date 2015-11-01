@@ -1,0 +1,240 @@
+
+container{
+	display: block;
+	width: 94%;
+	height: 85%;
+	margin-top: 5%;
+	background: #eaeaea;
+
+	box-shadow: .2rem .2rem .1rem rgba(0,0,0,.2);
+}
+form{
+	display: none;
+}
+	container nav{
+		position: relative;
+		width : 200px;
+		height: 100%;
+		float: left;
+
+		background: #1b2433;
+	}
+			container nav ul{
+				display:inline-block;
+				width: 100%;
+				height: 100%;
+				margin:0;
+				padding:0;
+				background:#242d3a;
+				text-align: center;
+			}
+				container nav ul li{
+					display:inline-block;
+					width: 100%;
+
+					list-style: none;
+					text-align: center;
+				}
+				container nav .navlogo{
+					background:#1f232d;
+					height: auto;
+					border-bottom: 5px solid #151b24;
+
+				}
+					container nav ul .navlogo img{
+						display:inline-block;
+						width: 50%;
+						height: auto;
+						margin:24%;
+					vertical-align: middle;
+
+					}
+					container nav ul .homelink{
+						height: 10%;
+
+
+						letter-spacing: 2px;
+						color: white;
+					}
+
+						container nav ul .color_label{
+							display: inline-block;
+							width: 2%;
+							height: 100%;
+
+							background: none;
+							vertical-align: top;
+							transition :.2s;
+						}
+						container nav ul .now{
+							background: yellow;
+						}
+						container nav ul .linkimg{
+							display:inline-block;
+							width: 30%;
+						}
+							container nav ul .linkimg img{
+								height: 1em;
+								margin-right: 5px;
+
+								vertical-align: middle;
+							}
+						container nav ul .linktxt{
+							display: inline-block;
+							width: 68%;
+							text-align:left;
+						vertical-align: middle;
+
+						}
+
+					container nav ul .mainmenu {
+						color: white;
+						background:#131921;
+
+						height: 2.5em;
+					}
+						container nav ul .mainmenu span{
+							display: inline-block;
+							width: 70%;
+							text-align: left;
+						vertical-align: middle;
+
+						}
+					container nav ul .navs{
+						font-size: .8em;
+						height: 3em;
+						color: white;
+						transition: .5s;
+						-webkit-transition: .5s;
+						-moz-transition: .5s;
+						-ms-transition: .5s;
+						-o-transition: .5s;
+					}
+					container nav ul .navs:hover{
+						background:#131921;
+					}
+					container nav ul .navs:hover .color_label{
+						background: yellow;
+					}
+
+
+	container #posts{
+		position: relative;
+		width : 80%;
+		height: 100%;
+		float: right;
+		background: #eaeaea;
+
+		text-align: center;
+	}
+
+		container #posts .menus{
+			display: block;
+			margin:0;
+			padding: 0;
+			width: 100%;
+			height: 3rem;
+			background: white;
+
+			text-align: right;
+
+			border-bottom: solid 2px #d6d7d8;
+			margin-bottom: -2px;
+		}
+			container #posts .menus li{
+				display: inline-block;
+				margin-right: 30px;
+				vertical-align: middle;
+
+				max-width: 1rem;
+				height: auto;
+			}
+			container #posts .menus li img:hover{
+				cursor:pointer;
+				animation: bounce 1s ;
+				-webkit-animation:bounce 1s;
+				-moz-animation:bounce 1s;
+				-ms-animation:bounce 1s;
+				-o-animation:bounce 1s;
+			}
+
+		container .scroll{
+			width: 100%;
+			height: 90%;
+			overflow-y: scroll;
+		}
+			container .scroll section{
+				width: 96%;
+				margin-top: 2%;
+				margin-bottom: 2%;
+				height: auto;
+				border: solid .15rem #d6d7d8;
+				display: inline-block;
+				background: white;
+			}
+			container .scroll .box .title{
+				display: inline-block;
+				font-size: 1rem;
+				width: 90%;
+				margin-top: 2%;
+				margin-bottom: 1rem;
+				text-align: left;
+			}
+			container .scroll .box .ring{
+				height: .8rem;
+			}
+			container .scroll .box .members_box{
+				display: inline-block;
+				text-align: center;
+				width: 100%;
+				margin-bottom: 2rem;
+
+			}
+					container .scroll .box .members_box  .member_cell {
+						display: inline-block;
+						width: 30%;
+
+						border: solid .1em #d6d7d8;
+
+						vertical-align: top;
+					}
+
+						container .scroll .box .members_box .member_cell .member{
+							display: inline-block;
+							line-height: 100%;
+							vertical-align: middle;
+						}
+							container .scroll .box .members_box .member_cell img{
+								width: 5rem;
+							}
+							container .scroll .box .members_box .member_cell .name{
+								margin-top: 1rem;
+
+								display: block;
+							}
+							container .scroll .box .members_box .member_cell .role{
+								margin-right: .5rem;
+								color: rgb(247, 201, 14);
+							}
+
+							.no_member:hover{
+								cursor:pointer;
+							}
+
+form{
+	display: inline-block;
+}
+
+.caption{
+	display: inline-block;
+	font-size: .8em;
+	margin-bottom: .8em;
+	width: 30%;
+}
+input{
+	display: inline-block;
+	width: 60%;
+}
+#add_submit{
+	width: 80%;
+}

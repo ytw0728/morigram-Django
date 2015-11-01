@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset = "utf-8"/>
+	<meta name="keywords" content="모리그램 가족 앨범 추억" />
+	<meta name="description" content="우리 가족의 추억을 기억할 수 있는 앨범입니다." />
+	<title>login</title>
+	<link rel = "stylesheet" type = "text/css" href = "/static/css/font.css" />
+	<link rel = "stylesheet" type = "text/css" href = "/static/css/default.css"/>
+	<link rel = "stylesheet" type = "text/css" href = "/static/css/login.css"/>
+<!--mediaquery start-->
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<!--mediaquery end-->
+<!--[if lt IE 9]>
+< script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+< ![endif]-->
+<!--[if lte IE 7]>
+< script src="js/IE8.js"></script>
+<![endif]-->
+<!-- script start -->
+<script>
+window.onload = function(){
+	headerlogo_align();
+}
+
+function check_stay(){
+	if(document.getElementById("staycheck").checked == true ){
+		document.getElementById("stay").value = "yes";
+	}
+	else{
+		document.getElementById("stay").value = "no";
+	}
+}
+</script>
+<script type = "text/javascript"src = "/static/js/layout.js"></script>
+<!-- script end -->
+</head>
+<body>
+<header id ="head">
+	<img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/>
+</header>
+<wrap>
+	<container>
+		<div class = "login">
+			<form action = "/login/" method = "post">
+				<big class = "title_login"><h1>Login</h1></big>
+				<div id = "text_section">
+					<span>e-mail : &nbsp<input type = "text" name = "email" class = "text"/></span>
+					<span>password :&nbsp<input type = "password" name = "password" class = "text"/></span>
+				</div>
+					<span class = "loginbtn"><input type = "submit" value = "Login" name ="loginbtn" class = "btn loginsubmit"/></span>
+					<input id = "stay" type = "text" name = "stay" value = "no" style = "display: none"/>
+					<span><input type = "checkbox" name = "staycheck" id = "staycheck" class = "check" onclick = "check_stay();"/><label for = "staycheck" >Remember me!</label></span>
+					
+			</form>
+		</div>
+		<div class = "sign_up">
+				<big class = "title_sign_up"><h1>Sign up</h1></big>
+				<div>
+				<p>TEST 테스트 TEST 테스트 <BR/></p>
+					<a href = "/register/"><input type = "button" value = "Sign up" class = "btn sign_up_btn"/></a>
+				</div>
+		</div>
+	</container>
+</wrap>
+{% if msg %}
+<script>
+    alert('{{ msg }}');
+</script>
+{%  endif %}
+</body>
+</html>
