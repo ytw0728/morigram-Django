@@ -64,6 +64,17 @@
 				<section class = "family">
 					<span class = "title"><img class = "ring" src = "/static/images/ring.png" /> 가족소개</span>
 					<div class = "profiles">
+                                            {% for i in members %}
+                                                <article class="members" style="width: 126.5px; height: 147px; margin-right: 21.0833px;">
+                                                        <img class="member_imgs" src="./home_files/pa.png" alt="멤버 프로필 이미지 감감감아빠 " style="height: 89px;">
+                                                        <span class="name">
+                                                        <span class="role" style="margin-right: 12.6px; color: rgb(247, 201, 14);">
+                                                        {{ i.position }}}
+                                                        </span>
+                                                        {{ i.name }}
+                                                        </span>
+                                                </article>
+                                           {% endfor %}
 					</div>
 				</section>
 				<section class = "preview">

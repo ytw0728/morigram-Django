@@ -413,7 +413,7 @@ function unshow_modal_img(){
 function logout_method(){
 	var form_temp = document.createElement("form");
 	form_temp.action = "/logout";
-	form_temp.method = "POST";
+	form_temp.method = "GET";
 
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){
 		form_temp.submit();

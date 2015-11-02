@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as l, logout
+from django.contrib.auth import authenticate, login as l, logout as lg
 from django.contrib.auth.models import User
 from account.models import Family
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from account.models import Family
+from album.models import Album
 
 @csrf_exempt
 def register(request):
@@ -34,19 +37,33 @@ def login(request):
     else:
         return render(request, 'login.html')
 
-
 def logout(request):
-    logout(request)
+    lg(request)
     return redirect('/')
 
+@login_required
 @csrf_exempt
 def setting(request):
-    return render(request, 'setting.html')
+    if request.method == 'GET':
+        pass    
+    f = Family.objects.get(user=request.user)
+    #members = list(f.members)
+    members = []
+    data = {'members': members}
+    return render(request, 'setting.html', data)
+
+
+
 
 
 def index(request):
     print(request.user)
     if request.user.is_authenticated() is True:
-        return render(request, 'home.html')
+        f = Family.objects.get(user=request.user)
+        members = list(f.members)
+        albums = list(Album.objects.filter(family=f))
+        data = {'members': members, 'albums':albums}
+        return render(request, 'home.html', data)
     else:
         return render(request, 'login.html')
+

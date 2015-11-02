@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 from os import *
 from album.models import Album, Image
 
 
+@login_required
 def album(reqeust):
     return render(reqeust, 'album.html')
 
