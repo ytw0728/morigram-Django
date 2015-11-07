@@ -14,9 +14,14 @@ import site
 from morigram.settings import BASE_DIR
 
 from django.core.wsgi import get_wsgi_application
+import pymysql
+pymysql.install_as_MySQLdb()
+
+"""
 site.addsitedir("/home/nero/.virtualenvs/morigram/bin")
 sys.path.append(os.path.abspath(BASE_DIR))
 sys.path.append(os.path.abspath(os.path.join(BASE_DIR,'/morigram')))
+"""
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "morigram.settings")
 
 application = get_wsgi_application()

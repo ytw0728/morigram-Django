@@ -5,3 +5,5 @@ static/admin/
 static/rest_framework/
 .idea/
 media/
+migrations/
+db.sqlite3

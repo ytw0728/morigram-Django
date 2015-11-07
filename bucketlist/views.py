@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status,views,mixins
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 from django.contrib.auth.decorators import login_required
-"""
+
 class BucketListView(viewsets.ModelViewSet):
     queryset = BucketList.objects.all()
     serializer_class = BucketListSerializer
@@ -31,7 +31,7 @@ class BucketListView(viewsets.ModelViewSet):
         img = self.request.data.get('image')
         serializer.save(family=family,image=img)
     #serializer_class = BucketListSerializer
-
+"""
     def get(self,request,*args,**kwargs):
         return Response(request.data)
 
@@ -46,7 +46,7 @@ class BucketListView(viewsets.ModelViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return HttpResponse("nono")
-    """
+"""
 
 @login_required
 def bucketlist(req):
@@ -58,6 +58,6 @@ def bucketlist(req):
         return redirect('/bucketlist/')
 
     else:
-        data = {'members': list(family.members) }
+        data = {'members': list(family.members.all()) }
         return render(request,'bucketlist.html', data)
 
