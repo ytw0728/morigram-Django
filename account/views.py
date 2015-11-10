@@ -20,7 +20,7 @@ def register(request):
         f.motto = data['motto']
         f.save()
 
-        fm = FamilyMember.objects.create(family=f,position="관리자",name="관리자")
+        fm = FamilyMember.objects.create(family=f, position="관리자", name="관리자")
         fm.save()
         return redirect('/')
 
@@ -55,6 +55,7 @@ def setting(request):
     data = {'members': members}
     return render(request, 'setting.html', data)
 
+
 def index(request):
     print(request.user)
     if request.user.is_authenticated() is True:
@@ -65,6 +66,7 @@ def index(request):
         return render(request, 'home.html', data)
     else:
         return render(request, 'login.html')
+
 
 def add_member(req):
     data = req.POST

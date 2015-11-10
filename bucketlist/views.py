@@ -31,6 +31,7 @@ class BucketListView(viewsets.ModelViewSet):
         img = self.request.data.get('image')
         serializer.save(family=family,image=img)
     #serializer_class = BucketListSerializer
+        
 """
     def get(self,request,*args,**kwargs):
         return Response(request.data)
@@ -59,5 +60,5 @@ def bucketlist(req):
 
     else:
         data = {'members': list(family.members.all()) }
-        return render(request,'bucketlist.html', data)
+        return render(request, 'bucketlist.html', data)
 
