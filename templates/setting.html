@@ -25,9 +25,7 @@
 </head>
 <body>
 <header id ="head">
-	<a href = "/home/">
-		<img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/>
-	</a>
+	<a href = "http://layer7.kr:1234"><img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/></a>
 </header>
 <wrap>
 	<container id = "main">
@@ -36,12 +34,12 @@
 				<li class = "navlogo">
 					<img src = "/static/images/sidebar_top.jpg" alt = "로고"/>
 				</li>
-				<a href = "/home/">
+				<a href = "http://layer7.kr:1234">
 					<li class = "homelink navs">
 						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/home.png" alt = "홈으로 이동합니다!"/></span><span class = "linktxt">Home</span>
 					</li>
 				</a>
-				<a href = "/bucket_list/">
+				<a href = "/bucketlist/">
 					<li class = "bucket_link mainmenus navs">
 						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/bucket_list.png" alt ="버킷리스트로 이동합니다!"/></span><span class = "linktxt">버킷리스트</span>
 					</li>
@@ -55,8 +53,8 @@
 		</nav>
 		<div id = "posts">
 			<ul class = "menus">
-				<li class = "link"><a href = "/setting/"><img src = "/static/images/설정.png" alt = "설정"/></a></li>
-				<li class = "link"><img id = "logout" src = "/static/images/로그아웃.png" alt = "로그아웃" onclick = "logout_method()"/></li>
+				<li class = "link"><a href = "/setting/"><img src = "/static/images/set.png" alt = "설정페이지"/></a></li>
+				<li class = "link"><img id = "logout" src = "/static/images/logout.png" alt = "로그아웃" onclick = "logout_method()"/></li>
 			</ul>
 			<div class = "scroll">
 				<section class = "box">
@@ -65,7 +63,21 @@
 						구성원을 추가해주세요!
 					</div>
 					<div class = "members_box">
-					
+						{% for i in members %}
+						<div class = "member_cell">
+							{% if i.name %}	
+								<div class = "member">
+								<img src = "{{ i.profile_image.url }}"/>
+							{% else %}
+								<div class = "member no_member">
+								<img src = "/static/images/more_member.png"/>
+							{% endif %}
+							<span class = "name"><span class = "role">{{ i.position }}</span>{{ i.name }}</span>
+							</div>
+						</div>	
+						{% endfor %}
+
+
 					</div>
 				</section>
 			</div>

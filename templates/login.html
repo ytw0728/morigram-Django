@@ -37,7 +37,7 @@ function check_stay(){
 </head>
 <body>
 <header id ="head">
-	<img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/>
+	<a href = "http://layer7.kr:1234"><img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/></a>
 </header>
 <wrap>
 	<container>
@@ -51,7 +51,7 @@ function check_stay(){
 					<span class = "loginbtn"><input type = "submit" value = "Login" name ="loginbtn" class = "btn loginsubmit"/></span>
 					<input id = "stay" type = "text" name = "stay" value = "no" style = "display: none"/>
 					<span><input type = "checkbox" name = "staycheck" id = "staycheck" class = "check" onclick = "check_stay();"/><label for = "staycheck" >Remember me!</label></span>
-					{% csrf_token %}
+					
 			</form>
 		</div>
 		<div class = "sign_up">
@@ -63,10 +63,5 @@ function check_stay(){
 		</div>
 	</container>
 </wrap>
-<script>
-	{% if message %}
-	alert('{{message}}');
-	{% endif %}
-</script>
 </body>
 </html>

@@ -22,8 +22,6 @@ def register(request):
         f.motto = data['motto']
         f.save()
 
-        fm = FamilyMember.objects.create(family=f, position="관리자", name="관리자")
-        fm.save()
         return render(request, 'login.html', {"message":"회원가입 성공"})
 
     else:
@@ -38,10 +36,10 @@ def login(request):
             l(request, user)
             return redirect('/')
         else:
-            return render(request, 'login.html', {'msg': 'check your id and password!'})
+            return render(request, 'login.html', {'message': '아이디 또는 비밀번호를 확인해주세요!'})
     else:
         return render(request, 'login.html')
-        
+
 @csrf_exempt
 def logout(request):
     lg(request)
@@ -54,7 +52,9 @@ def setting(request):
         pass    
     f = Family.objects.get(user=request.user)
     members = list(f.members.all())
-    members = []
+    while len(members) < 6:
+        members.append(None)
+
     data = {'members': members}
     return render(request, 'setting.html', data)
 
@@ -71,9 +71,13 @@ def index(request):
         return render(request, 'login.html')
 
 
+@csrf_exempt
 def add_member(req):
     data = req.POST
-    fm = FamilyMember.objects.create(family=req.user, position=data['position'], 
-        name=data['name'])
-    fm.profile_image = req.FILES['image']
+    family = Family.objects.get(user=req.user)
+    fm = FamilyMember.objects.create(family=family)
+    fm.profile_image = req.FILES['img']
+    fm.position = data['role']
+    fm.name = data['name']
     fm.save()
+    return redirect('/setting/')

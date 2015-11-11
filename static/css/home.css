@@ -187,6 +187,9 @@ form{
 						height: 100px;
 
 					}
+						container .family .role{
+							color: #f7c90e;
+						}
 
 					container .family .members .member_imgs{
 						display: inline-block;
