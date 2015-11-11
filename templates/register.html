@@ -97,7 +97,10 @@ container form {
 		background-size: 100% 100%;
 	}
 	container .signup:hover{
-		background: url('/static/images/register2.jpg') no-repeat;
+		background: url('/static/images/register2.jpg') no-repeat;		
+		background-size: 100% 100%;
+
+		cursor: pointer;
 	}
 
 </style>
@@ -106,7 +109,7 @@ container form {
 </head>
 <body>
 	<header id ="head">
-		<img src = "/static/images/headlogo.png" alt = "메인로고 입니다." id = "headerlogo"/>	
+		<a href = "http://layer7.kr:1234"><img src = "/static/images/headlogo.png" alt = "메인로고 입니다." id = "headerlogo"/></a>	
 	</header>
 	<wrap>
 		<container>
@@ -114,8 +117,8 @@ container form {
 			        <h2>회원가입</h2>
 			        <div>
 				        <span class = "data">
-				        	<span class = "text">email : </span>
-				        	<input type="text" name="email" placeholder=" ID" />
+				        	<span class = "text">ID : </span>
+				        	<input type="text" name="username" placeholder=" ID" />
 				        </span>
 				        <span class = "data">
 				        	<span class = "text">비밀번호 : </span>

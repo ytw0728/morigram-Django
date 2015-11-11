@@ -11,10 +11,12 @@ from album.models import Album
 def register(request):
     if request.method == 'POST':
         data = request.POST
-        user = User.objects.create(username=data['email'])
-        user.set_password(data['password'])
-        user.save()
-
+        try:
+            user = User.objects.create(username=data['username'])
+            user.set_password(data['password'])
+            user.save()
+        except:
+            return render(request, 'register.html', {"message": "회원가입에 실패했습니다. 다른 아이디로 시도해 주세요."})
         f = Family()
         f.user = user
         f.motto = data['motto']
@@ -22,7 +24,7 @@ def register(request):
 
         fm = FamilyMember.objects.create(family=f, position="관리자", name="관리자")
         fm.save()
-        return redirect('/')
+        return render(request, 'login.html', {"message":"회원가입 성공"})
 
     else:
         return render(request, 'register.html')
@@ -31,7 +33,7 @@ def register(request):
 def login(request):
     if request.method == 'POST':
         data = request.POST
-        user = authenticate(username=data['email'], password=data['password'])
+        user = authenticate(username=data['username'], password=data['password'])
         if user is not None:
             l(request, user)
             return redirect('/')
@@ -39,7 +41,8 @@ def login(request):
             return render(request, 'login.html', {'msg': 'check your id and password!'})
     else:
         return render(request, 'login.html')
-
+        
+@csrf_exempt
 def logout(request):
     lg(request)
     return redirect('/')

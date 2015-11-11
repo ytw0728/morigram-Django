@@ -42,26 +42,31 @@ function check_stay(){
 <wrap>
 	<container>
 		<div class = "login">
-			<form action = "/login.php" method = "post">
+			<form action = "/login/" method = "post">
 				<big class = "title_login"><h1>Login</h1></big>
 				<div id = "text_section">
-					<span>e-mail : &nbsp<input type = "text" name = "id" class = "text"/></span>
+					<span>ID : &nbsp<input type = "text" name = "username" class = "text"/></span>
 					<span>password :&nbsp<input type = "password" name = "password" class = "text"/></span>
 				</div>
 					<span class = "loginbtn"><input type = "submit" value = "Login" name ="loginbtn" class = "btn loginsubmit"/></span>
 					<input id = "stay" type = "text" name = "stay" value = "no" style = "display: none"/>
 					<span><input type = "checkbox" name = "staycheck" id = "staycheck" class = "check" onclick = "check_stay();"/><label for = "staycheck" >Remember me!</label></span>
-					
+					{% csrf_token %}
 			</form>
 		</div>
 		<div class = "sign_up">
 				<big class = "title_sign_up"><h1>Sign up</h1></big>
 				<div>
 				<p>TEST 테스트 TEST 테스트 <BR/></p>
-					<a href = "/add_family/"><input type = "button" value = "Sign up" class = "btn sign_up_btn"/></a>
+					<a href = "/register/"><input type = "button" value = "Sign up" class = "btn sign_up_btn"/></a>
 				</div>
 		</div>
 	</container>
 </wrap>
+<script>
+	{% if message %}
+	alert('{{message}}');
+	{% endif %}
+</script>
 </body>
 </html>
