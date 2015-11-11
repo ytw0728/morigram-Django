@@ -11,31 +11,33 @@ class AlbumTestCase(TestCase):
 
     def test_file_upload(self):
         with open('test.jpg', 'rb') as f:
-            res = self.c.post('/album/', {'name': 'image', 'file': f})
+            res = self.c.post('/api/album/', {'name': 'image', 'file': f})
         self.assertEqual(res.status_code, 201)
 
     def test_mkdir(self):
-        res = self.c.post('/album/create/', {'name': self.test_dir})
+        res = self.c.post('/api/album/create/', {'name': self.test_dir})
         self.assertEqual(res.status_code, 201)
 
     def test_get_files(Self):
-        res = self.get('/album/')
+        res = self.get('/api/album/')
 
     def test_get_current_subdirs(self):
         from json import loads
-        res = self.c.get('/album/{album}/'.format(album=self.test_dir))
+        res = self.c.get('/api/album/{album}/'.format(album=self.test_dir))
         data = loads(res.content.decode())
         self.assertEqual(data[0]['files'][0],
-                         '/album/MyAlbum/{img}'.format(img=self.test_file))
+                         '/api/album/MyAlbum/{img}'.format(img=self.test_file))
         self.assertEqual(data[0]['dirs'][0],
-                         '/album/MyAlbum/{dir}/'.format(dir=self.test_dir))
+                         '/api/album/MyAlbum/{dir}/'.format(dir=self.test_dir))
 """
 
 from json import loads
 from django.test import TestCase, RequestFactory
 from django.contrib.auth.models import User
-from .views import AlbumView
+from .views import album_view
 from account.models import Family, FamilyMember
+from album.models import Album 
+
 
 class AlbumTestCase(TestCase):
     def setUp(self):
@@ -54,56 +56,67 @@ class AlbumTestCase(TestCase):
         fm = FamilyMember.objects.create(family=f, position="관리자", name="관리자")
         fm.save()
         from shutil import rmtree
+        Album.objects.create(title=self.username, parent_album=None, family=f)
+        """
         try:
-            rmtree(r"C:\Users\ner0\Desktop\morigram\media\pipy")
+            
         except FileNotFoundError:
             pass
+        """
         self.f = RequestFactory()
 
     def FileUpload(self, url, filename):
         with open(filename, "rb") as fp:
-            req = self.f.post(url, {'name': 'image', 'file': fp})
+            req = self.f.post(url, {'img': fp})
         req.user = self.user
-        res = AlbumView.as_view()(req)
+        res = album_view(req)
         return loads(res.content.decode())
 
     def Mkdir(self, url, title):
-        req = self.f.post(url, {'title': title})
+        req = self.f.post(url, {'title': title, 'memo': 'memomemo'})
         req.user = self.user
-        res = AlbumView.as_view()(req)
+        res = album_view(req)
         return loads(res.content.decode())
 
     def GetFile(self, url):
-        req = self.f.get('/album/china/')
+        req = self.f.get('/api/album/china/')
         req.user = self.user
-        res = AlbumView.as_view()(req)
+        res = album_view(req)
         return loads(res.content.decode())
 
     def test_album(self):
-        #res = self.FileUpload('/album/', self.testfiles[0])
+        #res = self.FileUpload('/api/album/', self.testfiles[0])
         #self.assertEqual(res[0]['is_success'], True)
 
         try:
-            res = self.Mkdir('/album/', 'china')
+            res = self.Mkdir('/api/album/', 'china')
             self.assertEqual(res[0]['is_success'], True)
             print("[+] 1. Mkdir china , success.")
 
-            res = self.FileUpload('/album/china/', self.testfiles[0])
+            res = self.FileUpload('/api/album/china/', self.testfiles[0])
             self.assertEqual(res[0]['is_success'], True)
             print("[+] 2. upload to china , success.")
 
-            res = self.Mkdir('/album/china/', 'beijing')
+            res = self.Mkdir('/api/album/china/', 'beijing')
             self.assertEqual(res[0]['is_success'], True)
             print("[+] 3. Mkdir beijing in china , success.")
 
-            res = self.FileUpload('/album/china/beijing/', self.testfiles[1])
+            res = self.FileUpload('/api/album/china/beijing/', self.testfiles[1])
             self.assertEqual(res[0]['is_success'], True)
             print("[+] 4. upload in beijing")
 
-            res = self.GetFile('/album/china/')
+            res = self.GetFile('/api/album/china/')
             print(res)
-            self.assertEqual(res[0]['images'][0], '/media/test.png')
-            self.assertEqual(res[0]['albums'][0], '/media/{}/china/beijing'.format(self.username))
+            self.assertEqual(res[0]['files'][0]['path'], '/media/{}/china/test.png'.format(self.username))
+            self.assertEqual(res[0]['files'][0]['name'], 'test.png')
+
+            self.assertEqual(res[0]['folders'][0]['path'], '/api/album/china/beijing')
+            self.assertEqual(res[0]['folders'][0]['title'], 'beijing')
+            self.assertEqual(res[0]['memo'], 'memomemo')
+            self.assertEqual(res[0]['parent_folder'], '/api/album/')
+
+
+
 
         except AssertionError:
             print(res[0]['message'])

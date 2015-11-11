@@ -330,10 +330,11 @@ form{
 	width: 8rem;
 	text-align: center;
 }
-.modal_memo{
+.modal_memo,.modal_name{
 	display: none;
 }
-#modal_folder:checked ~ .modal_memo{
+#modal_folder:checked ~ .modal_memo,
+#modal_folder:checked ~ .modal_name{
 	display: inline-block;
 	margin-bottom: 1rem;
 }
@@ -361,6 +362,9 @@ form{
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: center;
+}
+.modal_submit{
+	cursor: pointer;
 }
 
 body{

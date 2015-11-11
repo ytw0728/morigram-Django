@@ -5,8 +5,9 @@ function make(){
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
 	
 
-	ajax_get_members();
+	//ajax_get_members();
 
+	set_event();
 	set_page_layout();
 }
 
@@ -62,43 +63,63 @@ function set_page_layout(){
 
 var member_len;
 function get_members(member_array_temp){
-	var temp = JSON.parse(member_array_temp);
+	members_box.innerHTML = "";
+	if( member_array_temp == null){
+		for(i = 0; i<6; i++){
+			var cell_temp = document.createElement("div");
+			cell_temp.className = "member_cell";
+			var member_temp = document.createElement("div");
+			member_temp.className = "member no_member";
 
-	member_len = temp.length;
+			var out = "";
+			out += "<img src = '/static/images/more_member.png'/>";
+			out += "<span class = 'name'><span class = 'role'></span></span>";
 
-	for(var i= 0; i < member_len ; i++){
-		var cell_temp = document.createElement("div");
-		cell_temp.className = "member_cell";
-		var member_temp = document.createElement("div");
-		member_temp.className = "member";
+			member_temp.innerHTML = out;
+			cell_temp.appendChild(member_temp);
 
-		var out = "";
-		out += "<img src = '"+temp[i].img+"'/>";
-		out += "<span class = 'name'><span class = 'role'>";
-		out += temp[i].role + "</span>";
-		out += temp[i].name + "</span>";
-
-		member_temp.innerHTML = out;
-		cell_temp.appendChild(member_temp);
-		
-		members_box.appendChild(cell_temp);
-		
+			members_box.appendChild(cell_temp);
+		}
 	}
-	for(i = 0; i< 6 - member_len; i++){
+	else{
+		var temp = JSON.parse(member_array_temp);
 
-		var cell_temp = document.createElement("div");
-		cell_temp.className = "member_cell";
-		var member_temp = document.createElement("div");
-		member_temp.className = "member no_member";
+		member_len = temp.length;
 
-		var out = "";
-		out += "<img src = '../images/more_member.png'/>";
-		out += "<span class = 'name'><span class = 'role'></span></span>";
+		for(var i= 0; i < member_len ; i++){
+			var cell_temp = document.createElement("div");
+			cell_temp.className = "member_cell";
+			var member_temp = document.createElement("div");
+			member_temp.className = "member";
 
-		member_temp.innerHTML = out;
-		cell_temp.appendChild(member_temp);
+			var out = "";
+			out += "<img src = '"+temp[i].img+"'/>";
+			out += "<span class = 'name'><span class = 'role'>";
+			out += temp[i].role + "</span>";
+			out += temp[i].name + "</span>";
 
-		members_box.appendChild(cell_temp);
+			member_temp.innerHTML = out;
+			cell_temp.appendChild(member_temp);
+			
+			members_box.appendChild(cell_temp);
+			
+		}
+		for(i = 0; i< 6 - member_len; i++){
+
+			var cell_temp = document.createElement("div");
+			cell_temp.className = "member_cell";
+			var member_temp = document.createElement("div");
+			member_temp.className = "member no_member";
+
+			var out = "";
+			out += "<img src = '/static/images/more_member.png'/>";
+			out += "<span class = 'name'><span class = 'role'></span></span>";
+
+			member_temp.innerHTML = out;
+			cell_temp.appendChild(member_temp);
+
+			members_box.appendChild(cell_temp);
+		}
 	}
 
 	make_ingre();
@@ -110,10 +131,9 @@ function set_event(){
 		no_member[i].addEventListener("click", add_member );
 	}
 }
-
 function add_member(){
 	var out = "";
-	out += "<form action = '/add_member' method = 'POST'>";
+	out += "<form action = '/add_member/' method = 'POST' enctype = 'multipart/form-data'>";
 	out += "<span class = 'caption'> 프로필 사진 </span>";
 	out += "<input id = 'input_img' name = 'img' type = 'file' />";
 	out += "<br/>";
@@ -158,7 +178,7 @@ function add_check(a){
 
 function logout_method(){
 	var form_temp = document.createElement("form");
-	form_temp.action = "/logout";
+	form_temp.action = "/logout/";
 	form_temp.method = "POST";
 
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){

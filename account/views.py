@@ -12,15 +12,15 @@ def register(request):
     if request.method == 'POST':
         data = request.POST
         try:
-            user = User.objects.create(username=data['username'])
-            user.set_password(data['password'])
-            user.save()
+            user = User.objects.create_user(username=data['username'], password=data['password'])
         except:
             return render(request, 'register.html', {"message": "회원가입에 실패했습니다. 다른 아이디로 시도해 주세요."})
         f = Family()
         f.user = user
         f.motto = data['motto']
         f.save()
+
+        Album.objects.create(title=data['username'], parent_album=None, family=f)
 
         return render(request, 'login.html', {"message":"회원가입 성공"})
 

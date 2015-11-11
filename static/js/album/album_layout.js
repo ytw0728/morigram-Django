@@ -1,3 +1,4 @@
+
 function make(){
 
 	document.styleSheets[0].addRule('#modal img', 'max-width : '+ window.innerWidth / 10 * 8 + "px");
@@ -91,177 +92,59 @@ function set_page_layout(){
 }
 
 var file_len;
-var head_code = "";
 function get_file(file_array_temp){
 
-	var temp = JSON.parse(file_array_temp);
+	var temp = JSON.parse(file_array_temp)[0];
 	var out = "";
-	
-	for ( var i in temp.text){
+	if( temp.memo != undefined){
 		out +="\
 			<div class = 'memo'>\
-				<span class = 'text'>\" "+temp.text[i].title+" \"</span>\
+				<span class = 'text'>\" "+temp.memo+" \"</span>\
 			</div>\
 		";
 	}
-	if( temp.head != undefined){
-		for( var i in temp.head ){
-			head_code = temp.head[i].type;
-			now_code = head_code;
-			parents_code = head_code;
-
-			if(code_array[0] == undefined){
-				code_array[0] = head_code;
-			}
-
+	if( temp.parent_folder == undefined){
 			out += "\
 				<div class = 'add_file list'>\
-					<img src = '../images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
+					<img src = '/static/images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
 				</div>\
 			";
-		}
 	}
 	else{
 		out += "\
 				<div class = 'to_parents list folder'>\
-					<img src = '../images/parents_folder.jpg' class = 'file_imgs parents_img' />\
+					<img src = '/static/images/parents_folder.jpg' class = 'file_imgs parents_img' />\
 					<span class = 'caption' >..</span>\
-					<input type = 'button' value = '" + parents_code + "' id = 'code'/>\
-					<input type = 'button' value = 'd' id = 'type'/>\
+					<input type = 'button' value = '" + temp.parent_folder + "' id = 'code'/>\
 				</div>\
 		";
 		out += "\
 			<div class = 'add_file list'>\
-				<img src = '../images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
+				<img src = '/static/images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
 			</div>\
 		";
 	}
-	for( var i in temp.folder ){
+	for( var i in temp.folders ){
 		out += "\
 					<div class = 'list files folder'>\
-						<img class = 'file_imgs' src = '../images/folder.png' alt = '"+temp.folder[i].caption+"입니다'/>\
-						<span class = 'caption'>"+ temp.folder[i].caption + "</span>\
-						<input type = 'button' value = '"+temp.folder[i].code+"' id = 'code'/>\
-						<input type = 'button' value = 'd' id = 'type'/>\
+						<img class = 'file_imgs' src = '/static/images/folder.png' alt = '"+temp.folders[i].title+" 폴더 입니다'/>\
+						<span class = 'caption'>"+ temp.folders[i].title + "</span>\
+						<input type = 'button' value = '"+temp.folders[i].path+"' id = 'code'/>\
 					</div>\
 				";
 	}
-	for( var i in temp.file){
+
+	for( var i in temp.files){
 		out += "\
 				<div class = 'list files file'>\
-					<img id = 'pics' class = 'file_imgs' src = '"+temp.file[i].img+"' alt = '"+temp.file[i].caption+" 이미지파일' />\
-					<span class = 'caption'> "+temp.file[i].caption+"</span>\
-					<input type = 'button' value = '"+temp.file[i].code+"' id = 'code'/>\
-					<input type = 'button' value = 'f' id = 'type'/>\
+					<img id = 'pics' class = 'file_imgs' src = 'http://layer7.kr:1234"+temp.files[i].path+"' alt = '"+temp.files[i].name+" 이미지파일' />\
+					<span class = 'caption'> "+temp.files[i].name+"</span>\
+					<input type = 'button' value = '"+temp.files[i].path+"' id = 'code'/>\
 				</div>\
 			";
-	}
 
-	var code_temp = "";
-
-	for(var i = 1 ; i <= code_index + 1 ; i++){
-		if( code_array[i] == undefined){
-			continue;
-		}
-		else code_temp += code_array[i] + " / " ;
 	}
-	if( head_code == now_code){
-		code_temp = "";
-	}
-	
-	route.innerHTML = "앨범모아보기 / " + code_temp;
-
-/*
-	if(temp[0].type == "r"){
-		head_code = temp[0].head;
-		now_code = head_code;
-		parents_code = head_code;
-
-		if(code_array[0] == undefined){
-			code_array[0] = head_code;
-		}
-
-		out += "\
-			<div class = 'add_file list'>\
-				<img src = '../images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
-			</div>\
-		";
-		for( var i = 1; i < temp.length ; i++){
-			if( temp[i].type == "t"){
-				continue;
-			}
-			else if( temp[i].type == "d"){
-				out += "\
-					<div class = 'list files folder'>\
-						<img class = 'file_imgs' src = '../images/folder.png' alt = '"+temp[i].caption+"입니다'/>\
-						<span class = 'caption'>"+ temp[i].caption + "</span>\
-						<input type = 'button' value = '"+temp[i].code+"' id = 'code'/>\
-						<input type = 'button' value = 'd' id = 'type'/>\
-					</div>\
-				";
-			}
-			else if( temp[i].type == "f"){
-				out += "\
-					<div class = 'list files file'>\
-						<img id = 'pics' class = 'file_imgs' src = '"+temp[i].img+"' alt = '"+temp[i].caption+" 이미지파일' />\
-						<span class = 'caption'> "+temp[i].caption+"</span>\
-						<input type = 'button' value = '"+temp[i].code+"' id = 'code'/>\
-						<input type = 'button' value = 'f' id = 'type'/>\
-					</div>\
-				";
-			}
-		}
-	}
-	else{
-		for( var i = 0 ; i < temp.length ; i++){
-			if( temp[i].type =="t"){
-				out +="\
-					<div class = 'memo'>\
-						<span class = 'text'>\" "+temp[i].title+" \"</span>\
-					</div>\
-				";
-			}
-		}
-		out += "\
-				<div class = 'to_parents list folder'>\
-					<img src = '../images/parents_folder.jpg' class = 'file_imgs parents_img' />\
-					<span class = 'caption' >..</span>\
-					<input type = 'button' value = '" + parents_code + "' id = 'code'/>\
-					<input type = 'button' value = 'd' id = 'type'/>\
-				</div>\
-		";
-		out += "\
-			<div class = 'add_file list'>\
-				<img src = '../images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
-			</div>\
-		";
-		for( var i = 0; i < temp.length ; i++){
-			if( temp[i].type == "t"){
-				continue;
-			}
-			else if( temp[i].type == "d"){
-				out += "\
-					<div class = 'list files folder'>\
-						<img class = 'file_imgs' src = '../images/folder.png' alt = '"+temp[i].caption+"입니다'/>\
-						<span class = 'caption'>"+ temp[i].caption + "</span>\
-						<input type = 'button' value = '"+temp[i].code+"' id = 'code'/>\
-						<input type = 'button' value = 'd' id = 'type'/>\
-					</div>\
-				";
-			}
-			else if( temp[i].type == "f"){
-				out += "\
-					<div class = 'list files file'>\
-						<img id = 'pics' class = 'file_imgs' src = '"+temp[i].img+"' alt = '"+temp[i].caption+" 이미지파일' />\
-						<span class = 'caption'> "+temp[i].caption+"</span>\
-						<input type = 'button' value = '"+temp[i].code+"' id = 'code'/>\
-						<input type = 'button' value = 'f' id = 'type'/>\
-					</div>\
-				";
-			}
-		}
-	}
-*/
+	route.innerHTML = "앨범모아보기" + now_path;
 	albums.innerHTML = out;
 	make_ingre(); // 요소생성
 	set_event();
@@ -283,23 +166,23 @@ function add_file_method(){
 	modal.removeEventListener("click", unshow_modal_img);
 	var form_temp = document.createElement("form");
 	form_temp.className = "modal_form";
-	form_temp.action = "../js/album/add_file.php";
 	form_temp.method = "POST";
-
+	form_temp.enctype = "multipart/form-data";
+	form_temp.id = "modal_form";
 	var out = "";
 	out += "<span class = 'modal_caption'>[ 형식 ]</span>";
 	out += "<input id = 'modal_folder' class = 'modal_input' type = 'radio' name = 'which_type' value = 'folder'/> 폴더";
 	out += "<input id = 'modal_file' class = 'modal_input' type = 'radio' name = 'which_type' value = 'file' /> 사진";
 	out += "<br/>";
-	out += "<span class = 'modal_caption modal_name'>[ 파일명 ]</span>";
-	out += "<input class = 'modal_name' type = 'text' name = 'name'/>"
+	out += "<span class = 'modal_caption modal_name'>[ 폴더명 ]</span>";
+	out += "<input id = 'folder_name' class = 'modal_name' type = 'text' name = 'title'/>";
 	out += "<br/>";
 	out += "<span class = 'modal_caption modal_img'>[ 이미지 파일 ]</span>";
-	out += "<input class = 'modal_img' type = 'file' name = 'img_file' />"; 
+	out += "<input id = 'file_name' class = 'modal_img' type = 'file' name = 'img' />"; 
 	out += "<span class = 'modal_caption modal_memo'>[ 짧은 이야기 ]</span>"
 	out += "<input class = 'modal_memo' type = 'text' name = 'memo'/>";
 	out += "<br/>";
-	out += "<input type = 'button' name = 'now_path' value = '"+now_code+"' style = 'display:none'/>";
+	//out += "<input type = 'button' name = 'now_path' value = '"+now_code+"' style = 'display:none'/>";
 	out += "<div class = 'modal_submit_box'>";
 	out += "<input class = 'modal_submit' type = 'button' onclick = 'modal_check()'/> ";
 	out += "</div>"
@@ -334,26 +217,26 @@ function modal_check(){
 		}
 		else{
 			if(confirm("정말 추가하시겠어요?\n\n")){
+				var out = "/api/album/" + now_path + document.getElementById("folder_name").value + "/";
+				document.getElementById("modal_form").action = out;
+
 				modal_form.submit();
 			}
 		}
 	}
 	else if(modal_file.checked){
-		if( modal_name.value == ""){
-			alert("파일명을 입력해주세요!\n\n");
+		if(modal_img.value == ""){
+			alert("이미지 파일을 선택해주세요!\n\n")
+		}
+		else if (/(\.jpg|\.bmp|\.png|\.gif|\.jpeg)$/i.test(modal_img.value)) {
+			if( confirm("정말 추가하시겠어요?\n\n") ){
+				var out = "/api/album/" + now_path;
+				document.getElementById("modal_form").action = out;
+				modal_form.submit();
+			}
 		}
 		else{
-			if(modal_img.value == ""){
-				alert("이미지 파일을 선택해주세요!\n\n")
-			}
-			else if (/(\.jpg|\.bmp|\.png|\.gif|\.jpeg)$/i.test(modal_img.value)) {
-				if( confirm("정말 추가하시겠어요?\n\n") ){
-					modal_form.submit();
-				}
-			}
-			else{
-				alert("가능한 이미지 확장자가 아닙니다. \n \( .jpg , .bmp , .png , .gif , .jpeg 이 가능합니다.\)\n\n");
-			}
+			alert("가능한 이미지 확장자가 아닙니다. \n \( .jpg , .bmp , .png , .gif , .jpeg 이 가능합니다.\)\n\n");
 		}
 	}
 }
@@ -414,7 +297,7 @@ function unshow_modal_img(){
 
 function logout_method(){
 	var form_temp = document.createElement("form");
-	form_temp.action = "/logout";
+	form_temp.action = "/logout/";
 	form_temp.method = "POST";
 
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){

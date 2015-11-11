@@ -65,6 +65,8 @@ function get_buckets(buckets_array){
 	var temp = JSON.parse(buckets_array);
 	len = temp.length;
 
+	bucket_list.innerHTML = "";
+
 	for(var i = 0; i < temp.length; i++){
 		source_code_array[source_index] = temp[i].code;
 		source_bool_array[source_index] = temp[i].check_info;
@@ -76,11 +78,11 @@ function get_buckets(buckets_array){
 		out += "<img class = 'lists_img' src = '" + temp[i].img +"' alt = '버킷리스트"+ temp[i].title +"성공여부 : " + temp[i].check +"'/>";
 		out += "</span>"
 		out += "<span class = 'title'>"+ temp[i].title+"</span>";
-		if( temp[i].check_info ){
-			out +=  "<span class = 'checks' ><img src = '../images/complit.png' alt = '버킷리스트 성공!' onclick = 'change_status("+source_index+")'/></span>";			
+		if( temp[i].is_acheived ){
+			out +=  "<span class = 'checks' ><img src = '/static/images/complit.png' alt = '버킷리스트 성공!' onclick = 'change_status_ajax("+source_index+")'/></span>";	
 		}
 		else{
-			out +=  "<span class = 'checks' ><img src = '../images/doing.png' alt = '버킷리스트 미완료!' onclick = 'change_status("+source_index+")'/></span>";			
+			out +=  "<span class = 'checks' ><img src = '/static/images/doing.png' alt = '버킷리스트 미완료!' onclick = 'change_status_ajax("+source_index+")'/></span>";			
 		}
 
 		div_temp.innerHTML = out;
@@ -97,17 +99,6 @@ function buckets_layout(){
 	}
 }
 
-function change_status(i){
-	if(source_bool_array[i]){
-		require_input.value = source_code_array[i] + "," + "false";
-		require_form.submit();
-	}
-	else{
-		require_input.value = source_code_array[i] + "," + "true";
-		require_form.submit();
-	}
-}
-
 function add_list(){
 	submit_section.removeEventListener("click",add_list);
 	var div_temp = document.createElement("div");
@@ -115,9 +106,9 @@ function add_list(){
 
 	var form_temp = document.createElement("form");
 	form_temp.className = "form_temp";
-	form_temp.action = "/add_list";		// 리스트 추가 url, action
-	form_temp.method = "POST";
-	
+	form_temp.action = "/add_list/";		// 리스트 추가 url, action
+	form_temp.method = "PUT";
+	form_temp.enctype = "multipart/form-data";
 	var out = "";
 	out += "<div class = 'add_input'>"
 	out += "<span class = 'input_caption' >리스트 이미지 (없으면 기본 이미지)</span>";
@@ -165,7 +156,7 @@ function submit_add(){
 
 function logout_method(){
 	var form_temp = document.createElement("form");
-	form_temp.action = "/logout";
+	form_temp.action = "/logout/";
 	form_temp.method = "POST";
 
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){

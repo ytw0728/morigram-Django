@@ -4,7 +4,7 @@ function make(){
 
 	make_ingre(); // 요소생성
 
-	ajax_get_members(); // 멤버 생성 후 요소 생성
+	//ajax_get_members(); // 멤버 생성 후 요소 생성
 	ajax_get_previews(); // 앨범 미리보기 생성 후 요소 생성
 	set_page_layout();
 }
@@ -69,6 +69,7 @@ function set_page_layout(){
 }
 
 var member_len;
+/*
 function get_members(member_array_temp){
 
 	var temp = JSON.parse(member_array_temp);
@@ -91,10 +92,12 @@ function get_members(member_array_temp){
 	make_ingre(); // 요소생성
 	members_layout();
 }
+*/
 function members_layout(){
-	for( var i = 0 ; i < member_len ; i++){
+	//for( var i = 0 ; i < member_len ; i++){
+	for(var i =0 ; i < members.length; i++){
 		members[i].style.height = ( members[i].offsetWidth /6 * 7) + "px";
-		members[i].style.marginRight = ( family.offsetWidth / 8 ) / member_len + "px";
+		//members[i].style.marginRight = ( family.offsetWidth / 8 ) / member_len + "px";
 		
 		member_imgs[i].style.height = member_imgs[i].offsetWidth + "px";
 		role[i].style.marginRight = (members[i].offsetWidth / 10) +"px";
@@ -109,7 +112,7 @@ var preview_len;
 function get_previews(preview_array_temp){
 	var temp = JSON.parse(preview_array_temp);
 	preview_len = temp.length;
-	
+
 	for(var i = 0 ; i < preview_len; i++){
 		source_temp_array[source_index++] = temp[i].img;
 		var temp_article = document.createElement("article");
@@ -117,7 +120,6 @@ function get_previews(preview_array_temp){
 		
 		var out = "";
 		out += "<img src = '"+temp[i].img+"' alt = '앨범 미리보기' onclick = 'show_modal_img("+i+")'/>"
-
 
 		temp_article.innerHTML = out;
 		previews.appendChild(temp_article);
@@ -176,7 +178,7 @@ function modal_layout(){
 
 function logout_method(){
 	var form_temp = document.createElement("form");
-	form_temp.action = "/logout";
+	form_temp.action = "/logout/";
 	form_temp.method = "POST";
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){
 		form_temp.submit();
