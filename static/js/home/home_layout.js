@@ -4,12 +4,6 @@ function make(){
 
 	make_ingre(); // 요소생성
 
-	homelink.style.lineHeight = homelink.offsetHeight + "px";
-	mainmenu.style.lineHeight = mainmenu.offsetHeight + "px";
-	for( var i = 0 ; i < mainmenus.length ; i++){
-		mainmenus[i].style.lineHeight = mainmenus[i].offsetHeight + "px";
-	}
-
 	ajax_get_members(); // 멤버 생성 후 요소 생성
 	ajax_get_previews(); // 앨범 미리보기 생성 후 요소 생성
 	set_page_layout();
@@ -19,12 +13,11 @@ var wrap;
 var nav;
 var navlogo;
 var homelink;
-var mainmenu;
-var mainmenus;
 
 var main;
 var posts;
 var menus;
+var scroll;
 var family;
 var profiles;
 var members;
@@ -36,6 +29,7 @@ var preview;
 var previews;
 var preview_imgs;
 
+var footer;
 var modal;
 
 function make_ingre(){
@@ -43,11 +37,10 @@ function make_ingre(){
 	nav = document.getElementsByTagName("nav")[0];
 	navlogo = document.getElementsByClassName("navlogo")[0];
 	homelink = document.getElementsByClassName("homelink")[0];
-	mainmenu = document.getElementsByClassName("mainmenu")[0];
-	mainmenus = document.getElementsByClassName("mainmenus");
 
 	main = document.getElementById("main");
 	posts = document.getElementById("posts");
+	scroll = document.getElementsByClassName("scroll")[0];
 	menus = document.getElementsByClassName("menus")[0];
 	family = document.getElementsByClassName("family")[0];
 	profiles = document.getElementsByClassName("profiles")[0];
@@ -59,16 +52,15 @@ function make_ingre(){
 	preview = document.getElementsByClassName("preview")[0];
 	previews = document.getElementsByClassName("previews")[0];
 	preview_imgs = document.getElementsByClassName("preview_imgs");
-
+	footer = document.getElementsByTagName("footer")[0];
 		modal = document.getElementById("modal");
 	
 }
 
 function set_page_layout(){
-	
-	posts.style.width = ( main.offsetWidth - nav.offsetWidth - 2 )+ "px";
+	posts.style.height = main.offsetHeight - nav.offsetHeight + "px";
 	menus.style.lineHeight = menus.offsetHeight + "px";
-
+	scroll.style.height = posts.offsetHeight - menus.offsetHeight - footer.offsetHeight + "px";
 	members_layout();
 	previews_layout();
 	if(check_modal_view){
@@ -101,7 +93,6 @@ function get_members(member_array_temp){
 }
 function members_layout(){
 	for( var i = 0 ; i < member_len ; i++){
-		members[i].style.width = family.offsetWidth / 8 + "px";
 		members[i].style.height = ( members[i].offsetWidth /6 * 7) + "px";
 		members[i].style.marginRight = ( family.offsetWidth / 8 ) / member_len + "px";
 		
@@ -136,9 +127,9 @@ function get_previews(preview_array_temp){
 }
 function previews_layout(){
 	for(var i = 0 ; i < preview_len ; i++){
-		preview_imgs[i].style.width = ( preview.offsetWidth / 6 ) + "px";
+		preview_imgs[i].style.width = ( preview.offsetWidth / 5 ) + "px";
 		preview_imgs[i].style.height = preview_imgs[i].offsetWidth + "px";
-		preview_imgs[i].style.marginLeft = (preview.offsetWidth / 8 ) / preview_len + "px";
+		preview_imgs[i].style.marginLeft = (preview.offsetWidth / 6 ) / preview_len + "px";
 	}
 	
 	

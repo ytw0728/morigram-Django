@@ -2,26 +2,23 @@
 
 	$a = array(
 		"folder" => array(
-			array("code" => "5" , "type" => "d" , "caption" => "5번 폴더"),
-			array("code" => "6" , "type" => "d" , "caption" => "6번 폴더"),
-			array("code" => "7" , "type" => "d" , "caption" => "7번 폴더"),
-			array("code" => "8" , "type" => "d" , "caption" => "8번 폴더"),
-			array("code" => "9" , "type" => "d" , "caption" => "9번 폴더")
+			array("code" => "Morigram1" , "type" => "d" , "caption" => "Morigram1"),
+			array("code" => "Morigram2" , "type" => "d" , "caption" => "Morigram2")
 		),
 		"file" => array(
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/dokyo (1).jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더"),
-			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 폴더")
+			array("code" => "1" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "1번 파일"),
+			array("code" => "2" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "2번 파일"),
+			array("code" => "3" , "type" => "f" ,"img" => "../images/dokyo (1).jpg", "caption" => "3번 파일"),
+			array("code" => "4" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "4번 파일"),
+			array("code" => "5" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "5번 파일"),
+			array("code" => "6" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "6번 파일"),
+			array("code" => "7" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "7번 파일"),
+			array("code" => "8" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "8번 파일"),
+			array("code" => "9" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "9번 파일"),
+			array("code" => "10" , "type" => "f" ,"img" => "../images/abc.jpg", "caption" => "10번 파일")
 		),
 		"text" => array(
-			array("code" =>"Abc", "type" => "t" , "title" => "가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라가나다라마바사 신기한한글나라")
+			array("code" =>"Abc", "type" => "t" , "title" => "2015년 11월 2일, Morigram 탄생일")
 		)
 	);
 

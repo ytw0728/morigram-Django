@@ -51,7 +51,7 @@ function link(){
     xmlHttp.onreadystatechange = function()
     {
         if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
-        {
+        {   
             get_file(xmlHttp.responseText);
         }
     }

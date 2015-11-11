@@ -103,7 +103,7 @@ class AlbumTestCase(TestCase):
             res = self.GetFile('/album/china/')
             print(res)
             self.assertEqual(res[0]['images'][0], '/media/test.png')
-            self.assertEqual(res[0]['albums'][0], '/media/pipy/china/beijing')
+            self.assertEqual(res[0]['albums'][0], '/media/{}/china/beijing'.format(self.username))
 
         except AssertionError:
             print(res[0]['message'])

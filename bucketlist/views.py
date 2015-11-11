@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import status,views,mixins
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 from django.contrib.auth.decorators import login_required
-
+from album.views import jsonify
 class BucketListView(viewsets.ModelViewSet):
     queryset = BucketList.objects.all()
     serializer_class = BucketListSerializer
@@ -26,12 +26,24 @@ class BucketListView(viewsets.ModelViewSet):
         req.data['family'] = Family.objects.filter(user=req.user).first()
         return self.create(req, *arg, **kwargs)
 
+    def put(self, req, *arg, **kwargs):
+        try:
+            is_archived = int(req.data['is_archived'])
+            family = Family.objects.get(usre=req.user)
+            bl = BucketList.objects.get(family=family)
+            bl.is_archived = bool(is_archived)
+            bl.save()
+            data = [{'is_success': True}]
+        except:
+            data = [{'is_success': False}]
+        return jsonify(data, 200)
+
     def perform_create(self, serializer):
         family = Family.objects.filter(user=self.request.user).first()
         img = self.request.data.get('image')
         serializer.save(family=family,image=img)
     #serializer_class = BucketListSerializer
-        
+
 """
     def get(self,request,*args,**kwargs):
         return Response(request.data)

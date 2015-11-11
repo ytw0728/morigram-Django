@@ -25,7 +25,7 @@
 </head>
 <body>
 <header id ="head">
-	<a href = "home.html">
+	<a href = "/home/">
 		<img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/>
 	</a>
 </header>
@@ -36,20 +36,17 @@
 				<li class = "navlogo">
 					<img src = "/static/images/sidebar_top.jpg" alt = "로고"/>
 				</li>
-				<a href = "home.html">
+				<a href = "/home/">
 					<li class = "homelink navs">
-						<span class = "linkimg"><img src = "/static/images/home.png" alt = "홈으로 이동합니다!"/></span><span class = "linktxt">Home</span>
+						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/home.png" alt = "홈으로 이동합니다!"/></span><span class = "linktxt">Home</span>
 					</li>
 				</a>
-				<li class = "mainmenu">
-					<span>Main Menu</span>
-				</li>
-				<a href = "bucket_list.html">
+				<a href = "/bucket_list/">
 					<li class = "bucket_link mainmenus navs">
 						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/bucket_list.png" alt ="버킷리스트로 이동합니다!"/></span><span class = "linktxt">버킷리스트</span>
 					</li>
 				</a>
-				<a href = "album.html">
+				<a href = "/album/">
 					<li class = "album mainmenus navs">
 						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/album.png" alt ="앨범 모아보기로 이동합니다!"/></span><span class = "linktxt">앨범모아보기</span>
 					</li>
@@ -58,7 +55,7 @@
 		</nav>
 		<div id = "posts">
 			<ul class = "menus">
-				<li class = "link"><a href = "setting.html"><img src = "/static/images/설정.png" alt = "설정"/></a></li>
+				<li class = "link"><a href = "/setting/"><img src = "/static/images/설정.png" alt = "설정"/></a></li>
 				<li class = "link"><img id = "logout" src = "/static/images/로그아웃.png" alt = "로그아웃" onclick = "logout_method()"/></li>
 			</ul>
 			<div class = "scroll">
@@ -68,17 +65,11 @@
 						구성원을 추가해주세요!
 					</div>
 					<div class = "members_box">
-				    {% for i in members %}
-                    <div class="member_cell" style="height: 305px; line-height: 307px;">
-                        <div class="member">
-                            <img src="./setting_files/pa.png">
-                            <span class="name"><span class="role">{{ i.position }}</span>{{ i.name }} 
-                    </span>
-                    </div></div>
-                    {% endfor %}
+					
 					</div>
 				</section>
 			</div>
+			<footer><font title = "안녕안녕?"><img src = "/static/images/headlogo.png"/></font></footer>
 		</div>
 	</container>
 </wrap>

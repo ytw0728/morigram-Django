@@ -1,4 +1,5 @@
 from django.http.response import HttpResponse
+from django.shortcuts import render
 from django.conf import settings
 from os import makedirs
 
@@ -35,18 +36,27 @@ def get_current_album_obj(path):
             continue
 
 
+def album_render(req, *args, **kwargs):
+    return render(req, 'album.html')
+
+
 class AlbumView(View):
 
-    def get(self, req):
+    def get(self, req, *args, **kwargs):
         family = Family.objects.get(user=req.user)
         data = {}
         _path = req.path.replace("/album/", '/media/{}/'.format(req.user.username))
         path_list = list(filter(None, _path.split("/")))
 
-        album = Album.objects.get(title=path_list[-1])
-        images = [('/media/'+image.image.file.name.split('\\')[-1]) for image in album.images.all()]
-        albums = [(_path+albums.title) \
+        try:
+            album = Album.objects.get(title=path_list[-1])
+            images = [('/media/'+image.image.file.name.split('\\')[-1]) for image in album.images.all()]
+            albums = [(_path+albums.title) \
                   for albums in album.dirs.all()]
+
+        except Album.DoesNotExist:
+            albums = None
+            images = None
         data['images'] = images
         data['albums'] = albums
         lst = []

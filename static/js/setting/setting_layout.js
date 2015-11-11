@@ -3,10 +3,7 @@ function make(){
 	make_ingre(); // 요소생성
 
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
-	mainmenu.style.lineHeight = mainmenu.offsetHeight + "px";
-	for( var i = 0 ; i < mainmenus.length ; i++){
-		mainmenus[i].style.lineHeight = mainmenus[i].offsetHeight + "px";
-	}
+	
 
 	ajax_get_members();
 
@@ -17,42 +14,46 @@ var wrap;
 var nav;
 var navlogo;
 var homelink;
-var mainmenu;
 var mainmenus;
 
 var main;
 var posts;
 var menus;
 
+var scroll;
+
 var members_box;
 var member_cell;
 var no_member;
 
+var footer;
 
 function make_ingre(){
 	wrap = document.getElementsByTagName("wrap")[0];
 	nav = document.getElementsByTagName("nav")[0];
 	navlogo = document.getElementsByClassName("navlogo")[0];
 	homelink = document.getElementsByClassName("homelink")[0];
-	mainmenu = document.getElementsByClassName("mainmenu")[0];
 	mainmenus = document.getElementsByClassName("mainmenus");
 
 	main = document.getElementById("main");
 	posts = document.getElementById("posts");
 	menus = document.getElementsByClassName("menus")[0];
+	scroll = document.getElementsByClassName("scroll")[0];
 
 	members_box = document.getElementsByClassName("members_box")[0];
 	member_cell = document.getElementsByClassName("member_cell");
 	no_member = document.getElementsByClassName("no_member");
 
+	footer = document.getElementsByTagName("footer")[0];
+
 	set_page_layout();
 }
 
 function set_page_layout(){
-
-	posts.style.width = ( main.offsetWidth - nav.offsetWidth - 2 )+ "px";
+	posts.style.height = main.offsetHeight - nav.offsetHeight + "px";
 	menus.style.lineHeight = menus.offsetHeight + "px";
-	
+	scroll.style.height = posts.offsetHeight - menus.offsetHeight - footer.offsetHeight + "px";
+
 	for(var i = 0 ; i < member_cell.length; i ++){	
 		member_cell[i].style.height = member_cell[i].offsetWidth + "px";
 		member_cell[i].style.lineHeight = member_cell[i].offsetHeight + "px";
@@ -129,7 +130,6 @@ function add_member(){
 	this.removeEventListener("click", add_member );
 
 }
-
 function add_check(a){
 	if( a.parentNode.children.namedItem("input_name").value == "" ){
 		alert("이름을 입력해주세요! \n\n");

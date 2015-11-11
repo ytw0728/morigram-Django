@@ -2,10 +2,6 @@
 	make_ingre(); // 요소생성
 
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
-	mainmenu.style.lineHeight = mainmenu.offsetHeight + "px";
-	for( var i = 0 ; i < mainmenus.length ; i++){
-		mainmenus[i].style.lineHeight = mainmenus[i].offsetHeight + "px";
-	}
 
 	bucket_list_ajax();
 	set_page_layout();
@@ -15,9 +11,6 @@ var wrap;
 var nav;
 var navlogo;
 var homelink;
-var mainmenu;
-var mainmenus;
-
 var main;
 var posts;
 var menus;
@@ -31,13 +24,13 @@ var submit_section;
 var require_form;
 var require_input;
 
+var footer;
+
 function make_ingre(){
 	wrap = document.getElementsByTagName("wrap")[0];
 	nav = document.getElementsByTagName("nav")[0];
 	navlogo = document.getElementsByClassName("navlogo")[0];
 	homelink = document.getElementsByClassName("homelink")[0];
-	mainmenu = document.getElementsByClassName("mainmenu")[0];
-	mainmenus = document.getElementsByClassName("mainmenus");
 
 	main = document.getElementById("main");
 	posts = document.getElementById("posts");
@@ -51,11 +44,14 @@ function make_ingre(){
 
 	require_form = document.getElementById("require_form");
 	require_input = document.getElementById("require_input");
+
+	footer = document.getElementsByTagName("footer")[0];
 }
 
 function set_page_layout(){
-	posts.style.width = ( main.offsetWidth - nav.offsetWidth - 2 )+ "px";
+	posts.style.height = main.offsetHeight - nav.offsetHeight + "px";
 	menus.style.lineHeight = menus.offsetHeight + "px";
+	scroll.style.height = posts.offsetHeight - menus.offsetHeight - footer.offsetHeight + "px";
 
 	buckets_layout();
 }

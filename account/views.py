@@ -61,7 +61,7 @@ def index(request):
     if request.user.is_authenticated() is True:
         f = Family.objects.get(user=request.user)
         members = list(f.members.all())
-        albums = list(Album.objects.filter(family=f))
+        albums = list(Album.objects.filter(family=f))[:20]
         data = {'members': members, 'albums':albums}
         return render(request, 'home.html', data)
     else:
@@ -72,4 +72,5 @@ def add_member(req):
     data = req.POST
     fm = FamilyMember.objects.create(family=req.user, position=data['position'], 
         name=data['name'])
+    fm.profile_image = req.FILES['image']
     fm.save()

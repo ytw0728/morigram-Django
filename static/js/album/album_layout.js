@@ -6,10 +6,6 @@ function make(){
 	make_ingre(); // 요소생성
 
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
-	mainmenu.style.lineHeight = mainmenu.offsetHeight + "px";
-	for( var i = 0 ; i < mainmenus.length ; i++){
-		mainmenus[i].style.lineHeight = mainmenus[i].offsetHeight + "px";
-	}
 
 
 	ajax_get_file(); // 폴더 생성 후 요소 생성
@@ -21,12 +17,13 @@ var wrap;
 var nav;
 var navlogo;
 var homelink;
-var mainmenu;
 var mainmenus;
 
 var main;
 var posts;
 var menus;
+
+var scroll;
 
 var route;
 
@@ -39,6 +36,8 @@ var file;
 var file_imgs;
 var caption;
 
+var footer;
+
 var modal;
 
 function make_ingre(){
@@ -46,13 +45,13 @@ function make_ingre(){
 	nav = document.getElementsByTagName("nav")[0];
 	navlogo = document.getElementsByClassName("navlogo")[0];
 	homelink = document.getElementsByClassName("homelink")[0];
-	mainmenu = document.getElementsByClassName("mainmenu")[0];
 	mainmenus = document.getElementsByClassName("mainmenus");
 
 	main = document.getElementById("main");
 	posts = document.getElementById("posts");
 	menus = document.getElementsByClassName("menus")[0];
 
+	scroll = document.getElementsByClassName("scroll")[0];
 	route = document.getElementsByClassName("route")[0];
 
 	albums = document.getElementsByClassName("albums")[0];
@@ -64,6 +63,8 @@ function make_ingre(){
 	file_imgs = document.getElementsByClassName('file_imgs');
 	caption = document.getElementsByClassName('caption');
 
+	footer = document.getElementsByTagName("footer")[0];
+
 	modal = document.getElementById("modal");
 	
 	set_page_layout();
@@ -71,9 +72,10 @@ function make_ingre(){
 
 function set_page_layout(){
 
-	posts.style.width = ( main.offsetWidth - nav.offsetWidth - 2 )+ "px";
+	posts.style.height = main.offsetHeight - nav.offsetHeight + "px";
 	menus.style.lineHeight = menus.offsetHeight + "px";
-	
+	scroll.style.height = posts.offsetHeight - menus.offsetHeight - footer.offsetHeight + "px";
+
 	for(var i = 0 ; i < list.length; i++){
 		list[i].style.height = list[i].offsetWidth + "px";
 	}
@@ -413,7 +415,7 @@ function unshow_modal_img(){
 function logout_method(){
 	var form_temp = document.createElement("form");
 	form_temp.action = "/logout";
-	form_temp.method = "GET";
+	form_temp.method = "POST";
 
 	if(confirm("정말 로그아웃 하시겠습니까? \n\n ")){
 		form_temp.submit();

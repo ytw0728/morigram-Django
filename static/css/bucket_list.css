@@ -12,9 +12,8 @@ form{
 }
 	container nav{
 		position: relative;
-		width : 200px;
-		height: 100%;
-		float: left;
+		width : 100%;
+		height:  4.5rem;
 
 		background: #1b2433;
 	}
@@ -24,46 +23,52 @@ form{
 				height: 100%;
 				margin:0;
 				padding:0;
-				background:#242d3a;
-				text-align: center;
+				background:#324644;
+				text-align: left;
 			}
+				container nav ul a{
+					text-decoration: none;
+				}
 				container nav ul li{
 					display:inline-block;
-					width: 100%;
-
+					width: 150px;
 					list-style: none;
 					text-align: center;
 				}
 				container nav .navlogo{
-					background:#1f232d;
-					height: auto;
-					border-bottom: 5px solid #151b24;
-
+					background:#273734;
+					width: 8rem;
+					height:  4.5rem;
+					line-height:  4.5rem;
+					margin-right: 1rem;
 				}
 					container nav ul .navlogo img{
 						display:inline-block;
-						width: 50%;
-						height: auto;
-						margin:24%;
-					vertical-align: middle;
-						
+						width: auto;
+						height: 50%;
+						vertical-align: middle;
+
 					}
 					container nav ul .homelink{
-						height: 10%;
-
-
+						height: 100%;
 						letter-spacing: 2px;
 						color: white;
 					}
 
 						container nav ul .color_label{
+							position: absolute;
 							display: inline-block;
-							width: 2%;
-							height: 100%;
+							width: 100%;
+							height: .15rem;
 
 							background: none;
-							vertical-align: top;
-							transition :.2s;
+							bottom:0;
+
+							transition: .2s;
+							-webkit-transition: .2s;
+							-moz-transition: .2s;
+							-ms-transition: .2s;
+							-o-transition: .2s;
 						}
 						container nav ul .now{
 							background: yellow;
@@ -75,41 +80,28 @@ form{
 							container nav ul .linkimg img{
 								height: 1em;
 								margin-right: 5px;
-
 								vertical-align: middle;
 							}
 						container nav ul .linktxt{
 							display: inline-block;
 							width: 68%;
 							text-align:left;
-							vertical-align: middle;
-						}
 
-					container nav ul .mainmenu {
-						color: white;
-						background:#131921;
-
-						height: 2.5em;
-						line-height: 2.5em;
-					}
-						container nav ul .mainmenu span{
-							display: inline-block;
-							width: 70%;
-							text-align: left;
 							vertical-align: middle;
 						}
 					container nav ul .navs{
+						position: relative;
 						font-size: .8em;
+						margin: 0;
 						height: 3em;
 						color: white;
+						vertical-align: bottom;
+						line-height: 3em;
 						transition: .5s;
 						-webkit-transition: .5s;
 						-moz-transition: .5s;
 						-ms-transition: .5s;
 						-o-transition: .5s;
-					}
-					container nav ul .navs:hover{
-						background:#131921;
 					}
 					container nav ul .navs:hover .color_label{
 						background: yellow;
@@ -118,10 +110,9 @@ form{
 
 	container #posts{
 		position: relative;
-		width : 80%;
-		height: 100%;
-		float: right;
-		background: #eaeaea;
+		width : 100%;
+		height: 80%;
+		background: #b7d7d4;
 
 		text-align: center;
 	}
@@ -131,7 +122,7 @@ form{
 			margin:0;
 			padding: 0;
 			width: 100%;
-			height: 3rem;
+			height: 2.5rem;
 			background: white;
 
 			text-align: right;
@@ -143,7 +134,7 @@ form{
 				display: inline-block;
 				margin-right: 30px;
 
-			vertical-align: middle;
+				vertical-align: middle;
 				max-width: 1rem;
 				height: auto;
 			}
@@ -158,12 +149,12 @@ form{
 
 		container .scroll{
 			width: 100%;
-			height: 90%;
+			height: 100%;
 			overflow-y: scroll;
 		}
 			container .scroll .bucket_list{
 				display: inline-block;
-				width: 98%;
+				width: 94%;
 				margin-top: 2%;
 				height: auto;
 				border: solid .15rem #d6d7d8;
@@ -246,7 +237,7 @@ form{
 			container .scroll .submit_section{
 				display: inline-block;
 				background: #597984;
-				width: 98%;
+				width: 94%;
 				height: 5rem;
 
 				line-height: 5rem;
@@ -340,3 +331,16 @@ form{
 						width: 50%;
 						margin-left : -10%;
 					}
+			footer{
+				position: absolute;
+				bottom: 0;
+				
+				width: 100%;
+				height: 1rem;
+				background: #324644;
+				text-align: right;
+			}
+				footer img{
+					height: 100%;
+					margin-right: .5rem;
+				}
