@@ -10,7 +10,7 @@
     temp.send();
 }
 */
-
+/*
 function ajax_get_previews(){
 
     var temp = new XMLHttpRequest();
@@ -22,4 +22,4 @@ function ajax_get_previews(){
     }
     temp.send();
 
-}
+}*/

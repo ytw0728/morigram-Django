@@ -64,8 +64,11 @@ def index(request):
     if request.user.is_authenticated() is True:
         f = Family.objects.get(user=request.user)
         members = list(f.members.all())
-        albums = list(Album.objects.filter(family=f))[:20]
-        data = {'members': members, 'albums':albums}
+        images = []
+        for album in Album.objects.filter(family=f):
+            for img in album.images.all():
+                images.append(img.image.url.replace("/home/morigram/morigram-Django/",''))
+        data = {'members': members, 'images': images}
         return render(request, 'home.html', data)
     else:
         return render(request, 'login.html')

@@ -5,7 +5,7 @@ function make(){
 	make_ingre(); // 요소생성
 
 	//ajax_get_members(); // 멤버 생성 후 요소 생성
-	ajax_get_previews(); // 앨범 미리보기 생성 후 요소 생성
+	//ajax_get_previews(); // 앨범 미리보기 생성 후 요소 생성
 	set_page_layout();
 }
 
@@ -105,7 +105,7 @@ function members_layout(){
 		
 	}
 }
-
+/*
 var source_temp_array = new Array();
 var source_index = 0;
 var preview_len;
@@ -127,11 +127,12 @@ function get_previews(preview_array_temp){
 	make_ingre();
 	previews_layout();
 }
+*/
 function previews_layout(){
-	for(var i = 0 ; i < preview_len ; i++){
+	for(var i = 0 ; i < preview_imgs.length ; i++){
 		preview_imgs[i].style.width = ( preview.offsetWidth / 5 ) + "px";
 		preview_imgs[i].style.height = preview_imgs[i].offsetWidth + "px";
-		preview_imgs[i].style.marginLeft = (preview.offsetWidth / 6 ) / preview_len + "px";
+		preview_imgs[i].style.marginLeft = (preview.offsetWidth / 6 ) / preview_imgs.length + "px";
 	}
 	
 	
@@ -139,8 +140,8 @@ function previews_layout(){
 
 
 var check_modal_view = 0;
-function show_modal_img(index){
-		modal.innerHTML = "<img id = 'modal_image' src = '"+source_temp_array[index]+"' alt = '이미지 크게보기'/>";
+function show_modal_img(tag_){
+		modal.innerHTML = "<img id = 'modal_image' src = '"+tag_.src+"' alt = '이미지 크게보기'/>";
 		modal.style.display = "flex"
 		modal_layout();
 		modal.style.zIndex = "100";

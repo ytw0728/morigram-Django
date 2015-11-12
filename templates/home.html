@@ -63,7 +63,7 @@
 					<div class = "profiles">
 						{% for i in members %}
 						<article class = "members">
-							<img class ="member_imgs" src = "{{ i.profile_image.url }}" alt = "{{ i.name }} 프로필 이미지"/>
+							<img class ="member_imgs" src = "{{ i.profile_image.url }}" alt = "{{ i.name }}"/>
 							<span class = "name"><span class = "role">{{ i.position }}</span>{{ i.name }}</span>
 						</article>
 						{% endfor %}
@@ -72,26 +72,9 @@
 				<section class = "preview">
 					<span class = "title"><img class = "ring" src = "/static/images/ring.png" /> 앨범 미리보기</span>
 					<div class = "previews">
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(1)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(2)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(3)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(4)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(5)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(6)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(7)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(8)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(9)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(10)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(11)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(12)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(13)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(14)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(15)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(16)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(17)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(18)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(19)"/></article>
-						<article class = "preview_imgs"><img src = "/static/images/abc.jpg" alt = "앨범미리보기" onclick = "show_modal_img(20)"/></article>
+						{% for i in images %}
+						<article class = "preview_imgs"><img src = "{{i}}" alt = "앨범미리보기" onclick = "show_modal_img(this)"/></article>
+						{% endfor %}
 					</div>
 				</section>
 			</div>
