@@ -1,9 +1,10 @@
 from django.http.response import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.conf import settings
 from os import makedirs
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 from json import loads, dumps
 from album.models import Album, Image
 from account.models import Family
@@ -51,6 +52,7 @@ def thumbnail(req):
 def album_render(req, *args, **kwargs):
     return render(req, 'album.html')
 
+@login_required
 @csrf_exempt
 def album_view(req, **kwargs):
     if req.method == 'GET':
@@ -79,7 +81,10 @@ def album_view(req, **kwargs):
         for path, title in album_data:
             data['folders'].append({'path': path+'/', 'title':title})
 
-        #data['memo'] = album.memo
+        data['memo'] = album.memo
+        if len(data['memo']) == 0:
+            data['memo'] = None
+            
         try:
             data['parent_folder'] = album.parent_album.path.replace("/home/morigram/morigram-Django/media/{}".\
                 format(req.user.username),'/api/album/')
@@ -114,7 +119,7 @@ def album_view(req, **kwargs):
             Image.objects.create(album=album, image=req.FILES['img'])
             data['is_success'] = True
             lst.append(data)
-            return jsonify(lst, 201)
+            return redirect('/album/')
 
         else:  # mkdir
             album_title = req.POST['title']
@@ -123,6 +128,7 @@ def album_view(req, **kwargs):
             try:
                 makedirs(_dir)
                 data['is_success'] = True
+                print(_path, _dir)
                 try:
                     parent = Album.objects.get(title=path_list[-1])
                 except IndexError:
@@ -133,9 +139,7 @@ def album_view(req, **kwargs):
             except OSError:
                 data['is_success'] = False
                 data['message'] = 'Album Existed.'
-                data['title'] = 'china'
                 lst.append(data)
                 return jsonify(lst, 200)
-            data['title'] = 'china'
             lst.append(data)
-            return jsonify(lst, 200)
+            return redirect('/album/')

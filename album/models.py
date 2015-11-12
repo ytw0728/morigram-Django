@@ -8,12 +8,12 @@ fs = FileSystemStorage(location='/static/albums/')
 
 class Album(models.Model):
     family = models.ForeignKey(Family)
-    title = models.CharField(max_length=255, null=False)
+    title = models.CharField(max_length=255, null=False, unique=True)
     parent_album = models.ForeignKey('self', related_name='dirs', null=True)
     memo = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.family.user.username+", "+self.title
     @property
     def path(self):
         from os.path import join
@@ -52,6 +52,9 @@ def get_upload_path(instunce, filename):
 class Image(models.Model):
     album = models.ForeignKey(Album, related_name='images')
     image = models.ImageField(upload_to=get_upload_path)
+
+    def __str__(self):
+        return self.image.name
     @property
     def get_absolute_image_url(self):
         return self.image.url.replace("/home/morigram/morigram-Django/media/",'')
