@@ -9,6 +9,9 @@ from rest_framework import status,views,mixins
 from rest_framework.parsers import MultiPartParser, FormParser, FileUploadParser
 from django.contrib.auth.decorators import login_required
 from album.views import jsonify
+from django.views.decorators.csrf import csrf_exempt
+
+"""
 class BucketListView(viewsets.ModelViewSet):
     queryset = BucketList.objects.all()
     serializer_class = BucketListSerializer
@@ -16,12 +19,13 @@ class BucketListView(viewsets.ModelViewSet):
 
     def get(self, req, *arg, **kwargs):
         if req.user.is_authenticated() == True:
-            return render(req, 'bucket_list.html')
+            return Response(req.data)
+            #return render(req, 'bucket_list.html')
         else:
             return redirect('/')
 
     def post(self, req, *arg, **kwargs):
-        req.data['image'] = req.stream.FILES['image']
+        req.data['img'] = req.stream.FILES['img']
         req.data['title'] = req.stream.POST['title']
         req.data['family'] = Family.objects.filter(user=req.user).first()
         return self.create(req, *arg, **kwargs)
@@ -40,11 +44,11 @@ class BucketListView(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         family = Family.objects.filter(user=self.request.user).first()
-        img = self.request.data.get('image')
-        serializer.save(family=family,image=img)
+        img = self.request.data.get('img')
+        serializer.save(family=family,img=img)
     #serializer_class = BucketListSerializer
 
-"""
+
     def get(self,request,*args,**kwargs):
         return Response(request.data)
 
@@ -61,16 +65,20 @@ class BucketListView(viewsets.ModelViewSet):
             return HttpResponse("nono")
 """
 
+@csrf_exempt
 @login_required
 def bucketlist(req):
     family = Family.objects.get(user=req.user)
     if req.method == 'POST':
         data = req.POST
-
-        b = BucketList.objects.create(family=family, title=data['title'])
+        img = req.FILES['img']
+        title = req.POST['title']
+        b = BucketList.objects.create(family=family, title=title, image=img)
         return redirect('/bucketlist/')
 
     else:
-        data = {'members': list(family.members.all()) }
-        return render(request, 'bucketlist.html', data)
+        bls = BucketList.objects.filter(family=family)
+        data = {'data': list(bls)}
+
+        return render(req, 'bucket_list.html', data)
 

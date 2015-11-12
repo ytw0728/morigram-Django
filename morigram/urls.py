@@ -5,7 +5,7 @@ from django.conf.urls import include, url
 from django.views.decorators.csrf import csrf_exempt
 from account.views import register, login, setting, index, logout, add_member
 from album.views import album_view, album_render, thumbnail
-
+from bucketlist.views import bucketlist
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -17,7 +17,8 @@ urlpatterns = [
     url(r'^login/', login),
     url(r'^setting/', setting),
     url(r'^add_member/', add_member),
-    #url(r'^bucketlist/', BucketListView.as_view({'get': 'get', 'post':'post'})),
+    #url(r'^api/bucketlist/', BucketListView.as_view({'get': 'get', 'post':'post'})),
+    url(r'^bucketlist/', bucketlist),
     url(r'^$', index),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

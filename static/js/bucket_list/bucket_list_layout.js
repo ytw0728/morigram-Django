@@ -106,8 +106,8 @@ function add_list(){
 
 	var form_temp = document.createElement("form");
 	form_temp.className = "form_temp";
-	form_temp.action = "/add_list/";		// 리스트 추가 url, action
-	form_temp.method = "PUT";
+	form_temp.action = "/bucketlist/";		// 리스트 추가 url, action
+	form_temp.method = "POST";
 	form_temp.enctype = "multipart/form-data";
 	var out = "";
 	out += "<div class = 'add_input'>"

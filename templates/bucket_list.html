@@ -58,10 +58,12 @@
 			</ul>
 			<div class = "scroll">
 				<section class = "bucket_list">
-					<!--<div class = "lists">
-						<img class ="lists_img"src = "/static/images/morigram_bucket.png" alt = "버킷리스트들 입니다."/>
-						<span class = "title">놀러가기랄랄라ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ</span><span class = "checks" ><img src = "/static/images/success.png" alt = "버킷리스트 성공!"/></span>
-					</div>-->
+					{% for i in data %}
+					<div class = "lists">
+						<img class ="lists_img"src = "{{ i.image.url }}" alt = "버킷리스트들 입니다."/>
+						<span class = "title">{{ i.title }}</span><span class = "checks" ><img src = "/static/images/success.png" alt = "버킷리스트 성공!"/></span>
+					</div>
+					{% endfor %}
 				</section>
 				<section class = "submit_section">
 					<img src = "/static/images/dongle.png" alt = "버킷리스트를 추가하는 버튼입니다."/>
