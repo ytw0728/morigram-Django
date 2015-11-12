@@ -10,7 +10,7 @@
 *::-webkit-scrollbar-button:start:decrement,
 *::-webkit-scrollbar-button:end:increment{
 	display: block;
-	height: 10px;
+	height: .3em;
 	background: #b7d7d4;
 }
 *::-webkit-scrollbar-track{

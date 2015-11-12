@@ -14,7 +14,7 @@ var now_path = "";
 function link(){
     var temp = new XMLHttpRequest();
     var out = this.children.namedItem("code").value;
-    now_path = this.children.namedItem("code").value.split("/api/album")[1];
+    now_path = this.children.namedItem("code").value.split("/api/album/")[1];
     temp.open("GET",out);
     temp.onreadystatechange = function(){
         if(temp.readyState === 4 && temp.status === 200){

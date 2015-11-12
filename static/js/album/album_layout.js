@@ -112,16 +112,16 @@ function get_file(file_array_temp){
 	}
 	else{
 		out += "\
+			<div class = 'add_file list'>\
+				<img src = '/static/images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
+			</div>\
+		";
+		out += "\
 				<div class = 'to_parents list folder'>\
 					<img src = '/static/images/parents_folder.jpg' class = 'file_imgs parents_img' />\
 					<span class = 'caption' >..</span>\
 					<input type = 'button' value = '" + temp.parent_folder + "' id = 'code'/>\
 				</div>\
-		";
-		out += "\
-			<div class = 'add_file list'>\
-				<img src = '/static/images/dongle.png' class = 'add_img' onclick = 'add_file_method()'/>\
-			</div>\
 		";
 	}
 	for( var i in temp.folders ){
@@ -217,7 +217,7 @@ function modal_check(){
 		}
 		else{
 			if(confirm("정말 추가하시겠어요?\n\n")){
-				var out = "/api/album/" + now_path + document.getElementById("folder_name").value + "/";
+				var out = "/api/album/" + now_path;
 				document.getElementById("modal_form").action = out;
 
 				modal_form.submit();
