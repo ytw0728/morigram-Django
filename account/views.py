@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from account.models import Family, FamilyMember
 from album.models import Album
+from os.path import join
 
 @csrf_exempt
 def register(request):
@@ -79,7 +80,10 @@ def add_member(req):
     data = req.POST
     family = Family.objects.get(user=req.user)
     fm = FamilyMember.objects.create(family=family)
-    fm.profile_image = req.FILES['img']
+    if req.FILES.get('img'):
+        fm.profile_image = req.FILES['img']
+    else:
+        pass
     fm.position = data['role']
     fm.name = data['name']
     fm.save()

@@ -71,9 +71,12 @@ def bucketlist(req):
     family = Family.objects.get(user=req.user)
     if req.method == 'POST':
         data = req.POST
-        img = req.FILES['img']
+        try:
+            img = req.FILES['img']
+        except:
+            pass
         title = req.POST['title']
-        b = BucketList.objects.create(family=family, title=title, image=img)
+        b = BucketList.objects.create(family=family, title=title)
         return redirect('/bucketlist/')
 
     else:
