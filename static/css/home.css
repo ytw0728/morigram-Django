@@ -14,7 +14,6 @@ form{
 		position: relative;
 		width : 100%;
 		height:  4.5rem;
-
 		background: #1b2433;
 	}
 			container nav ul{
@@ -30,9 +29,10 @@ form{
 					text-decoration: none;
 				}
 				container nav ul li{
-					display:inline-block;
-					width: 150px;
+					display: inline-block;
+					width: auto;
 					list-style: none;
+					white-space: nowrap;
 					text-align: center;
 				}
 				container nav .navlogo{
@@ -41,6 +41,7 @@ form{
 					height:  4.5rem;
 					line-height:  4.5rem;
 					margin-right: 1rem;
+
 				}
 					container nav ul .navlogo img{
 						display:inline-block;
@@ -84,9 +85,8 @@ form{
 							}
 						container nav ul .linktxt{
 							display: inline-block;
-							width: 68%;
+							width: 8rem;
 							text-align:left;
-
 							vertical-align: middle;
 						}
 					container nav ul .navs{

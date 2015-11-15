@@ -8,7 +8,6 @@ function make(){
 
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
 
-
 	ajax_get_file(); // 폴더 생성 후 요소 생성
 
 	set_page_layout();
@@ -180,7 +179,7 @@ function add_file_method(){
 	out += "<span class = 'modal_caption modal_img'>[ 이미지 파일 ]</span>";
 	out += "<input id = 'file_name' class = 'modal_img' type = 'file' name = 'img' />"; 
 	out += "<span class = 'modal_caption modal_memo'>[ 짧은 이야기 ]</span>"
-	out += "<input class = 'modal_memo' type = 'text' name = 'memo'/>";
+	out += "<input id = 'folder_memo' class = 'modal_memo' type = 'text' name = 'memo'/>";
 	out += "<br/>";
 	//out += "<input type = 'button' name = 'now_path' value = '"+now_code+"' style = 'display:none'/>";
 	out += "<div class = 'modal_submit_box'>";
@@ -217,10 +216,11 @@ function modal_check(){
 		}
 		else{
 			if(confirm("정말 추가하시겠어요?\n\n")){
-				var out = "/api/album/" + now_path;
+				/*var out = "/api/album/" + now_path;
 				document.getElementById("modal_form").action = out;
 
-				modal_form.submit();
+				modal_form.submit();*/
+				add_file_ajax(true);
 			}
 		}
 	}
@@ -230,9 +230,10 @@ function modal_check(){
 		}
 		else if (/(\.jpg|\.bmp|\.png|\.gif|\.jpeg)$/i.test(modal_img.value)) {
 			if( confirm("정말 추가하시겠어요?\n\n") ){
-				var out = "/api/album/" + now_path;
+				/*var out = "/api/album/" + now_path;
 				document.getElementById("modal_form").action = out;
-				modal_form.submit();
+				modal_form.submit();*/
+				add_file_ajax(false);
 			}
 		}
 		else{

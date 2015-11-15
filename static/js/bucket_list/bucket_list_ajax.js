@@ -1,6 +1,6 @@
 ﻿function bucket_list_ajax(){
 	var temp = new XMLHttpRequest();
-    temp.open('GET', '/bucketlist/');
+    temp.open('POST', '/buckets/');
     temp.onreadystatechange = function(){
         if(temp.readyState === 4 && temp.status === 200){
             get_buckets(temp.responseText);

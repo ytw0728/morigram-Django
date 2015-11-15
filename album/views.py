@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from django.http.response import HttpResponse
 from django.shortcuts import render, redirect
 from django.conf import settings
@@ -103,6 +104,7 @@ def album_view(req, **kwargs):
         family = Family.objects.get(user=req.user)
 
         if req.FILES.get('img'):
+            print "file"
             #filename = req.FILES['file'].name
             try:
                 album_title = path_list[-1]
@@ -123,10 +125,11 @@ def album_view(req, **kwargs):
 
         else:  # mkdir
             album_title = req.POST['title']
-            _dir = settings.MEDIA_ROOT+"/{user}/{album}/{title}".\
-                format(user=req.user.username, album=_path, title=album_title)
+            print type(album_title), "mkdir"
+            _dir = unicode(settings.MEDIA_ROOT)+u"/%s/%s/%s"\
+                % (req.user.username, _path, album_title)
             try:
-                makedirs(_dir)
+                makedirs(_dir, mode=0777)
                 data['is_success'] = True
                 print(_path, _dir)
                 try:
@@ -136,10 +139,11 @@ def album_view(req, **kwargs):
                 except Album.DoesNotExist:
                     return jsonify([], 401)
                 Album.objects.create(family=family, title=album_title, memo=req.POST['memo'], parent_album=parent)
-            except OSError:
+            except OSError, e:
                 data['is_success'] = False
                 data['message'] = 'Album Existed.'
                 lst.append(data)
+                print lst,e 
                 return jsonify(lst, 200)
             lst.append(data)
-            return redirect('/album/')
+            return jsonify(lst,200)

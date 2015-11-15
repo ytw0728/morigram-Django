@@ -21,8 +21,8 @@ try:
 except ImportError:
     pass
 
+site.addsitedir("/home/nero/venv3/bin")
 """
-site.addsitedir("/home/nero/.virtualenvs/morigram/bin")
 sys.path.append(os.path.abspath(BASE_DIR))
 sys.path.append(os.path.abspath(os.path.join(BASE_DIR,'/morigram')))
 """

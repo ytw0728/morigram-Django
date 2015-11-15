@@ -1,3 +1,4 @@
+#! -*- coding:utf-8 -*-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as l, logout as lg
 from django.contrib.auth.models import User
@@ -15,7 +16,7 @@ def register(request):
         try:
             user = User.objects.create_user(username=data['username'], password=data['password'])
         except:
-            return render(request, 'register.html', {"message": "회원가입에 실패했습니다. 다른 아이디로 시도해 주세요."})
+            return render(request, 'register.html', {"message": u"회원가입에 실패했습니다. 다른 아이디로 시도해 주세요."})
         f = Family()
         f.user = user
         f.motto = data['motto']
@@ -23,7 +24,7 @@ def register(request):
 
         Album.objects.create(title=data['username'], parent_album=None, family=f)
 
-        return render(request, 'login.html', {"message":"회원가입 성공"})
+        return render(request, 'login.html', {"message":u"회원가입 성공"})
 
     else:
         return render(request, 'register.html')
@@ -37,7 +38,7 @@ def login(request):
             l(request, user)
             return redirect('/')
         else:
-            return render(request, 'login.html', {'message': '아이디 또는 비밀번호를 확인해주세요!'})
+            return render(request, 'login.html', {'message': u'아이디 또는 비밀번호를 확인해주세요!'})
     else:
         return render(request, 'login.html')
 

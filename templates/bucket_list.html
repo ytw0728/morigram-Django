@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset = "utf-8"/>
-	<title>Title</title>
+	<title>Morigram: 모리그램</title>
 	<link rel = "stylesheet" type = "text/css" href = "/static/css/font.css" />
 	<link rel = "stylesheet" type = "text/css" href = "/static/css/default.css"/>
 	<link rel = "stylesheet" type = "text/css" href = "/static/css/bucket_list.css"/>
@@ -25,7 +25,7 @@
 </head>
 <body>
 <header id ="head">
-	<a href = "http://layer7.kr:1234"><img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/></a>
+	<a href = "/"><img src = "/static/images/headlogo.png" alt = "메인 로고 입니다." id = "headerlogo"/></a>
 </header>
 <wrap>
 	<container id = "main">
@@ -34,7 +34,7 @@
 				<li class = "navlogo">
 					<img src = "/static/images/sidebar_top.jpg" alt = "로고"/>
 				</li>
-				<a href = "http://layer7.kr:1234">
+				<a href = "/">
 					<li class = "homelink navs">
 						<span class = "color_label"></span><span class = "linkimg"><img src = "/static/images/home.png" alt = "홈으로 이동합니다!"/></span><span class = "linktxt">Home</span>
 					</li>
@@ -60,8 +60,13 @@
 				<section class = "bucket_list">
 					{% for i in data %}
 					<div class = "lists">
-						<img class ="lists_img"src = "{{ i.image.url }}" alt = "버킷리스트들 입니다."/>
-						<span class = "title">{{ i.title }}</span><span class = "checks" ><img src = "/static/images/success.png" alt = "버킷리스트 성공!"/></span>
+						<span class = "img_box">
+							<img class ="lists_img"src = "{{ i.image.url }}" alt = "버킷리스트들 입니다."/>
+						</span>
+						<span class = "title">{{ i.title }}</span>
+						<span class = "checks" >
+							<img src = "/static/images/success.png" alt = "버킷리스트 성공!"/>
+						</span>
 					</div>
 					{% endfor %}
 				</section>
