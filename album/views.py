@@ -68,7 +68,7 @@ def album_view(req, **kwargs):
         except Album.DoesNotExist:
             album = Album.objects.get(title=req.user.username)
 
-        img_data = [('/media/'+image.get_absolute_image_url,
+        img_data = [(image.get_absolute_image_url,
             image.get_absolute_image_url.split('/')[-1]
             ) for image in album.images.all()]
         album_data = [(_path+albums.title,albums.title) \
@@ -76,7 +76,8 @@ def album_view(req, **kwargs):
 
         data['files'] = []
         for path,name in img_data:
-            data['files'].append({'path': path, 'name': name})
+            print path
+            data['files'].append({'path': path.replace("/home/nero/morigram-Django","/media/"), 'name': name})
 
         data['folders'] = []
         for path, title in album_data:
@@ -87,7 +88,7 @@ def album_view(req, **kwargs):
             data['memo'] = None
             
         try:
-            data['parent_folder'] = album.parent_album.path.replace("/home/morigram/morigram-Django/media/{}".\
+            data['parent_folder'] = album.parent_album.path.replace("/home/nero/morigram-Django/media/{}".\
                 format(req.user.username),'/api/album/')
         except AttributeError:
             data['parent_folder'] = None
@@ -102,7 +103,7 @@ def album_view(req, **kwargs):
         _path = req.path.replace("/api/album/", '')
         path_list = list(filter(None, _path.split("/")))
         family = Family.objects.get(user=req.user)
-
+        print req.FILES
         if req.FILES.get('img'):
             print "file"
             #filename = req.FILES['file'].name
@@ -117,10 +118,11 @@ def album_view(req, **kwargs):
                 data['message'] = 'Album Does not Exit.'
                 lst.append(data)
                 return jsonify(lst, 401)
-
+            print unicode(album), req.FILES
             Image.objects.create(album=album, image=req.FILES['img'])
             data['is_success'] = True
             lst.append(data)
+            #return jsonify(lst, 200)
             return redirect('/album/')
 
         else:  # mkdir
@@ -129,7 +131,9 @@ def album_view(req, **kwargs):
             _dir = unicode(settings.MEDIA_ROOT)+u"/%s/%s/%s"\
                 % (req.user.username, _path, album_title)
             try:
-                makedirs(_dir, mode=0777)
+                makedirs(_dir, mode=int('777',8))
+                chmod(_dir, int('777',8))
+                system("chmod 777 "+_dir)
                 data['is_success'] = True
                 print(_path, _dir)
                 try:
@@ -146,4 +150,5 @@ def album_view(req, **kwargs):
                 print lst,e 
                 return jsonify(lst, 200)
             lst.append(data)
-            return jsonify(lst,200)
+            #return jsonify(lst,200)
+            return redirect('/')

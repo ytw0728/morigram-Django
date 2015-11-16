@@ -3,7 +3,7 @@
 
 	homelink.style.lineHeight = homelink.offsetHeight + "px";
 
-	bucket_list_ajax();
+	//bucket_list_ajax();
 	set_page_layout();
 }
 
@@ -79,10 +79,12 @@ function get_buckets(buckets_array){
 		out += "</span>"
 		out += "<span class = 'title'>"+ temp[i].title+"</span>";
 		if( temp[i].is_acheived ){
-			out +=  "<span class = 'checks' ><img src = '/static/images/complit.png' alt = '버킷리스트 성공!' onclick = 'change_status_ajax("+source_index+")'/></span>";	
+			//out +=  "<span class = 'checks' ><img src = '/static/images/complit.png' alt = '버킷리스트 성공!' onclick = 'change_status_ajax("+source_index+")'/></span>";
+			out +=  "<span class = 'checks' ><img src = '/static/images/complit.png' alt = '버킷리스트 성공!' onclick = 'change_status_ajax(true)'/></span>";
 		}
 		else{
-			out +=  "<span class = 'checks' ><img src = '/static/images/doing.png' alt = '버킷리스트 미완료!' onclick = 'change_status_ajax("+source_index+")'/></span>";			
+			//out +=  "<span class = 'checks' ><img src = '/static/images/doing.png' alt = '버킷리스트 미완료!' onclick = 'change_status_ajax("+source_index+")'/></span>";
+			out +=  "<span class = 'checks' ><img src = '/static/images/doing.png' alt = '버킷리스트 미완료!' onclick = 'change_status_ajax(false)'/></span>";
 		}
 
 		div_temp.innerHTML = out;

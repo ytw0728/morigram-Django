@@ -136,14 +136,14 @@ function get_file(file_array_temp){
 	for( var i in temp.files){
 		out += "\
 				<div class = 'list files file'>\
-					<img id = 'pics' class = 'file_imgs' src = 'http://layer7.kr:1234"+temp.files[i].path+"' alt = '"+temp.files[i].name+" 이미지파일' />\
+					<img id = 'pics' class = 'file_imgs' src = '"+temp.files[i].path+"' alt = '"+temp.files[i].name+" 이미지파일' />\
 					<span class = 'caption'> "+temp.files[i].name+"</span>\
 					<input type = 'button' value = '"+temp.files[i].path+"' id = 'code'/>\
 				</div>\
 			";
 
 	}
-	route.innerHTML = "앨범모아보기" + now_path;
+	route.innerHTML = "앨범모아보기/" + now_path;
 	albums.innerHTML = out;
 	make_ingre(); // 요소생성
 	set_event();

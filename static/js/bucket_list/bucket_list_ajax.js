@@ -1,6 +1,7 @@
-﻿function bucket_list_ajax(){
+﻿
+function bucket_list_ajax(){
 	var temp = new XMLHttpRequest();
-    temp.open('POST', '/buckets/');
+    temp.open('POST', '/bucketlist/');
     temp.onreadystatechange = function(){
         if(temp.readyState === 4 && temp.status === 200){
             get_buckets(temp.responseText);
@@ -9,6 +10,7 @@
     temp.send();
 }
 
+/*
 function change_status_ajax(i){
 	var temp = new XMLHttpRequest();
 	var data = new FormData();
@@ -29,4 +31,14 @@ function change_status_ajax(i){
 	temp.open('PUSH','/buckets/');
 	temp.send();
 	
+}
+*/
+
+function change_status_ajax(bool , this_){
+	if(this_.src == "http://morigram.kim82536.pe.kr:8000/static/images/complit.png"){
+		this_.src = "/static/images/doing.png";
+	}
+	else{
+		this_.src = "/static/images/complit.png";
+	}
 }

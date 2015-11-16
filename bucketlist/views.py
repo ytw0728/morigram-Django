@@ -70,13 +70,13 @@ class BucketListView(viewsets.ModelViewSet):
 def bucketlist(req):
     family = Family.objects.get(user=req.user)
     if req.method == 'POST':
-        data = req.POST
+        title = req.POST['title']
         try:
             img = req.FILES['img']
+            b = BucketList.objects.create(family=family, title=title, image=img)
         except:
-            pass
-        title = req.POST['title']
-        b = BucketList.objects.create(family=family, title=title)
+            b = BucketList.objects.create(family=family, title=title)
+
         return redirect('/bucketlist/')
 
     else:

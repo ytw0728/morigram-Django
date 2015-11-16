@@ -65,7 +65,11 @@
 						</span>
 						<span class = "title">{{ i.title }}</span>
 						<span class = "checks" >
-							<img src = "/static/images/success.png" alt = "버킷리스트 성공!"/>
+							{% if i.is_archeived %}
+                                <img src = "/static/images/success.png" onclick="change_status_ajax(false, this)" alt = "버킷리스트 성공!"/>
+                            {% else %}
+                                <img src = "/static/images/doing.png" onclick="change_status_ajax(true, this)" />
+                            {% endif %}
 						</span>
 					</div>
 					{% endfor %}

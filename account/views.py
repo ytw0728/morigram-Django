@@ -22,7 +22,7 @@ def register(request):
         f.motto = data['motto']
         f.save()
 
-        Album.objects.create(title=data['username'], parent_album=None, family=f)
+        Album.objects.create(title=data['username'], parent_album=None, family=f, memo=f.motto)
 
         return render(request, 'login.html', {"message":u"회원가입 성공"})
 
@@ -69,7 +69,7 @@ def index(request):
         images = []
         for album in Album.objects.filter(family=f):
             for img in album.images.all():
-                images.append(img.image.url.replace("/home/morigram/morigram-Django/",''))
+                images.append(img.get_absolute_image_url)
         data = {'members': members, 'images': images}
         return render(request, 'home.html', data)
     else:

@@ -1,8 +1,12 @@
+# -*- coding:utf-8 -*-
 from django.db import models
 from account.models import Family
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 fs = FileSystemStorage(location='/static/albums/')
 
 
@@ -22,6 +26,7 @@ class Album(models.Model):
         
         for (path, _dir, files) in walk(myalbum):
             for d in _dir:
+                d = unicode(d)
                 if d == self.title:
                     return join(path,d)
 
@@ -45,7 +50,7 @@ class Album(models.Model):
 def get_upload_path(instunce, filename):
     from os.path import join
     
-    #print(instunce.album.path, instunce.album.title, filename)
+    print(type(instunce.album.path), type(instunce.album.title), filename)
     return join(instunce.album.path, filename)
 
 
@@ -57,4 +62,4 @@ class Image(models.Model):
         return self.image.name
     @property
     def get_absolute_image_url(self):
-        return self.image.url.replace("/home/morigram/morigram-Django/media/",'')
+        return self.image.url.replace("/home/nero/morigram-Django",'')
